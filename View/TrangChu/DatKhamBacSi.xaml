@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BVND115.View.TrangChu.DatKhamBacSi"
+             Title="DANH SÁCH BÁC SĨ ĐẶT KHÁM">
+    <StackLayout Orientation="Vertical">
+        <Grid BackgroundColor="{StaticResource Cyan100Accent}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <ImageButton Grid.Column="0" Margin="3,0,0,0" Source="icon_go_back.png" HeightRequest="35" WidthRequest="35" x:Name="Imb_GoBack" Clicked="Imb_GoBack_Clicked" Background="{StaticResource Cyan100Accent}">
+                <ImageButton.Triggers>
+                    <Trigger TargetType="ImageButton"
+                                            Property="IsPressed"
+                                            Value="True">
+                        <Setter Property="Scale" Value=".8" />
+                    </Trigger>
+                    <Trigger TargetType="ImageButton"
+                                              Property="IsPressed"
+                                              Value="False">
+                        <Setter Property="Scale" Value="1" />
+                    </Trigger>
+                </ImageButton.Triggers>
+            </ImageButton>
+            <Label VerticalTextAlignment="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1" TextColor="White" Text="DANH SÁCH ĐẶT KHÁM BÁC SĨ" FontSize="18" FontAttributes="Bold" FontFamily="Lobster-Regular"></Label>
+        </Grid>
+         <ActivityIndicator IsRunning="False" IsVisible="false"  Color="{StaticResource Cyan100Accent}" x:Name="AcI_load"></ActivityIndicator>
+        <SearchBar Margin="0,0,5,0" Placeholder="Nhập tên bác sĩ cần tìm" x:Name="Srb_Search" TextChanged="Srb_Search_TextChanged"></SearchBar>
+        <ScrollView Orientation="Horizontal" Margin="10,10,10,0" >
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Tất cả" BackgroundColor="{StaticResource Cyan100Accent}" CornerRadius="20" x:Name="Btn_TatCa" Clicked="Btn_TatCa_Clicked"/>
+                <Button Text="Khám VIP" BackgroundColor="#dcded9" TextColor="Black" Margin="10,0,0,0" CornerRadius="20" x:Name="Btn_KhamVip" Clicked="Btn_KhamVip_Clicked"/>
+                <Button Text="Khám Yêu cầu" BackgroundColor="#dcded9" TextColor="Black" Margin="10,0,0,0" CornerRadius="20" x:Name="Btn_KhamYeuCau" Clicked="Btn_KhamYeuCau_Clicked"/>
+                <Button Text="Khám BHYT" BackgroundColor="#dcded9" TextColor="Black" Margin="10,0,0,0" CornerRadius="20" x:Name="Btn_BHYT" Clicked="Btn_BHYT_Clicked"/>
+            </StackLayout>
+        </ScrollView>
+        <ListView ItemsSource="{Binding }" HasUnevenRows="True" RowHeight="-1" Margin="10,0,10,10" x:Name="Lsv_BacSi" ItemSelected="Lsv_BacSi_ItemSelected" >
+            <ListView.ItemTemplate >
+                <DataTemplate >
+                    <ViewCell>
+                        <Border Padding="20,20,20,20" Margin="0,20,0,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="0" Grid.Column="0" Source="icon_lvbacsi_bac_si.png" HeightRequest="18" WidthRequest="20"/>
+                                <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Margin="20,0,0,0" Text="{Binding TenBS}" TextColor="{StaticResource Cyan100Accent}" FontSize="18" FontAttributes="Bold" TextTransform="Uppercase" FontFamily="Lobster-Regular"></Label>
+
+                                <Image Margin="0,4,0,0" Grid.Row="1" Grid.Column="0"  Source="icon_lvbacsi_gioi_tinh.png" HeightRequest="16" WidthRequest="16"/>
+                                <Label Grid.Row="1" Grid.Column="1" Margin="20,4,0,0"  Text="Giới tính: "></Label>
+                                <Label Margin="0,4,0,0" Grid.Row="1" Grid.Column="2" Text="{Binding GioiTinh}"></Label>
+
+                                <Image VerticalOptions="Start" Margin="0,4,0,0"  Grid.Row="2" Grid.Column="0" Source="icon_lvbacsi_chuyen_khoa.png" HeightRequest="16" WidthRequest="16"/>
+                                <Label Grid.Row="2" Grid.Column="1" Margin="20,4,0,0"  Text="Chuyên khoa: "></Label>
+                                <Label Margin="0,4,0,0"  Grid.Row="2" Grid.Column="2" Text="{Binding ChuyenKhoa}"  FontAttributes="Bold" LineBreakMode="WordWrap"></Label>
+
+                                <Image Margin="0,4,0,0"  Grid.Row="3" Grid.Column="0" Source="icon_lvbacsi_lich_kham.png" HeightRequest="16" WidthRequest="16"/>
+                                <Label Grid.Row="3" Grid.Column="1" Margin="20,4,0,0"  Text="Lịch khám: "></Label>
+                                <Label Margin="0,4,0,0"  Grid.Row="3" Grid.Column="2" Text="{Binding LichKham}"></Label>
+
+                                <Image Margin="0,4,0,0"  Grid.Row="4" Grid.Column="0" Source="icon_lvbacsi_gia_kham.png" HeightRequest="16" WidthRequest="16"/>
+                                <Label Grid.Row="4" Grid.Column="1" Margin="20,4,0,0"  Text="Giá khám: "></Label>
+                                <Label Margin="0,4,0,0"  Grid.Row="4" Grid.Column="2" Text="{Binding GiaKham}"></Label>
+                            </Grid>
+                        </Border>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

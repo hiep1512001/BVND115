@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:BVND115.View.Home"
+             x:Class="BVND115.View.Home.HomeUserPage"   
+            xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            android:TabbedPage.IsSwipePagingEnabled="False"
+            android:TabbedPage.IsSmoothScrollEnabled="False"
+            BarTextColor="Black"
+            Title="HomeUserPage">
+    <NavigationPage Title="Trang chủ"  IconImageSource="icon_trang_chu.png" NavigationPage.HasNavigationBar="False">
+        <x:Arguments>
+            <local:TabTrangChu Title="Trang chủ"  IconImageSource="icon_trang_chu.png">
+            </local:TabTrangChu>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Hồ sơ" IconImageSource="icon_ho_so.png">
+        <x:Arguments>
+            <local:TabHoSo Title="Hồ sơ" IconImageSource="icon_ho_so.png">
+            </local:TabHoSo>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Phiếu khám" IconImageSource="icon_phieu_kham.png">
+        <x:Arguments>
+            <local:TabPhieuKham Title="Phiếu khám" IconImageSource="icon_phieu_kham.png">
+            </local:TabPhieuKham>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Thông báo" IconImageSource="icon_thong_bao.png">
+        <x:Arguments>
+            <local:TabThongBao Title="Thông báo" IconImageSource="icon_thong_bao.png">
+            </local:TabThongBao>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Tài khoản" IconImageSource="icon_tai_khoan.png">
+        <x:Arguments>
+            <local:TabTaiKhoan Title="Tài khoản" IconImageSource="icon_tai_khoan.png">
+            </local:TabTaiKhoan>
+        </x:Arguments>
+    </NavigationPage>
+</TabbedPage>

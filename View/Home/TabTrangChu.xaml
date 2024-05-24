@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BVND115.View.Home.TabTrangChu"
+             Title="TabTrangChu"
+            >
+    <StackLayout Orientation="Vertical" BackgroundColor="White">
+        <StackLayout Orientation="Vertical">
+            <StackLayout Orientation="Horizontal" Margin="0,0,0,0" BackgroundColor="{StaticResource Cyan100Accent}" HeightRequest="70">
+                <Image Margin="10,0,0,0" Source="icon_user_white_background.png" WidthRequest="50" HeightRequest="50">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"></TapGestureRecognizer>
+                    </Image.GestureRecognizers>
+                </Image>
+                <VerticalStackLayout Margin="10,0,0,0" VerticalOptions="Center">
+                    <Label Text="Xin chào" FontAttributes="Bold" TextColor="White" FontFamily="Lobster-Regular" FontSize="16"></Label>
+                    <Label Text="NGUYỄN HOÀNG HIỆP" FontAttributes="Bold" TextColor="White" FontFamily="Lobster-Regular" FontSize="16"></Label>
+                </VerticalStackLayout>
+            </StackLayout>
+        </StackLayout>
+        <ActivityIndicator IsRunning="False" IsVisible="false"  Color="{StaticResource Cyan100Accent}" x:Name="AcI_load"></ActivityIndicator>
+        <ScrollView VerticalOptions="StartAndExpand" >
+            <StackLayout Orientation="Vertical">
+                <Grid Margin="15,10,15,0" RowSpacing="0" ColumnSpacing="0"  >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="{OnPlatform *}" />
+                        <RowDefinition Height="{OnPlatform *}" />
+                        <RowDefinition Height="{OnPlatform *}" />
+
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Padding="0,0,0,0" Grid.Row="0" Grid.Column="0" StrokeShape="RoundRectangle 20,0,0,0" BackgroundColor="{StaticResource MauNenChucNang}" >
+                        <Button  Text="Đặt khám tại cơ sở" BackgroundColor="{StaticResource MauNenChucNang}" TextColor="{StaticResource Black}" ImageSource="{OnPlatform icon_dat_kham_co_so.png}" ContentLayout="{OnPlatform 'Bottom,3',WinUI=Left }" FontAttributes="Bold" LineBreakMode="WordWrap"  FontSize="{OnPlatform 11, WinUI=16}"></Button>
+                        </Border>
+                        <Border Padding="0,0,0,0" Grid.Row="0" Grid.Column="1"  BackgroundColor="{StaticResource MauNenChucNang}" >
+                            <Button  Text="Đặt khám khám bác sĩ" BackgroundColor="{StaticResource MauNenChucNang}" TextColor="{StaticResource Black}" ImageSource="icon_dat_kham_bac_si.png" ContentLayout="{OnPlatform 'Bottom,3',WinUI=Left }" FontAttributes="Bold"  LineBreakMode="WordWrap"  FontSize="{OnPlatform 11, WinUI=16}"  x:Name="Btn_DatKhamBacSi" Clicked="Btn_DatKhamBacSi_Clicked"></Button>
+                        </Border>
+                        <Border Padding="0,0,0,0" Grid.Row="0" Grid.Column="2" StrokeShape="RoundRectangle 0,20,0,0"  BackgroundColor="{StaticResource MauNenChucNang}">
+                            <Button  Text="Tư vấn khám bệnh qua video" BackgroundColor="{StaticResource MauNenChucNang}" TextColor="{StaticResource Black}" ImageSource="icon_tu_van_kham_benh.png" ContentLayout="{OnPlatform 'Bottom,3',WinUI=Left }" FontAttributes="Bold"   LineBreakMode="WordWrap"  FontSize="{OnPlatform 11, WinUI=16}"></Button>
+                        </Border>
+                        <Border Padding="0,0,0,0" Grid.Row="1" Grid.Column="0"  BackgroundColor="{StaticResource MauNenChucNang}">
+                            <Button  Text="Gói sức khỏe toàn diện" BackgroundColor="{StaticResource MauNenChucNang}" TextColor="{StaticResource Black}" ImageSource="icon_goi_suc_khoe.png" ContentLayout="{OnPlatform 'Bottom,3',WinUI=Left }" FontAttributes="Bold"  LineBreakMode="WordWrap"  FontSize="{OnPlatform 11, WinUI=16}"></Button>
+                        </Border>
+                        <Border Padding="0,0,0,0" Grid.Row="1" Grid.Column="1"  BackgroundColor="{StaticResource MauNenChucNang}">
+                            <Button  Text="Đặt lịch xét nghiệm" BackgroundColor="{StaticResource MauNenChucNang}" TextColor="{StaticResource Black}" ImageSource="icon_dat_lich_xet_nghiem.png" ContentLayout="{OnPlatform 'Bottom,3',WinUI=Left }" FontAttributes="Bold" LineBreakMode="WordWrap"  FontSize="{OnPlatform 11, WinUI=16}"></Button>
+                        </Border>
+                        <Border Padding="0,0,0,0" Grid.Row="1" Grid.Column="2"  BackgroundColor="{StaticResource MauNenChucNang}">
+                            <Button  Text="Đặt lịch tiêm chủng" BackgroundColor="{StaticResource MauNenChucNang}" TextColor="{StaticResource Black}" ImageSource="icon_dat_lich_tiem_chung.png" ContentLayout="{OnPlatform 'Bottom,3',WinUI=Left }" FontAttributes="Bold"  LineBreakMode="WordWrap"  FontSize="{OnPlatform 11, WinUI=16}"></Button>
+                        </Border>
+                        <Border Padding="0,0,0,0" Grid.Row="2" Grid.Column="0" StrokeShape="RoundRectangle 0,0,20,0"  BackgroundColor="{StaticResource MauNenChucNang}">
+                            <Button  Text="Tra cứu kết quả khám bệnh" BackgroundColor="{StaticResource MauNenChucNang}" TextColor="{StaticResource Black}" ImageSource="icon_tra_cuu_ket_qua.png" ContentLayout="{OnPlatform 'Bottom,3',WinUI=Left }" FontAttributes="Bold"  LineBreakMode="WordWrap"  FontSize="{OnPlatform 11, WinUI=16}" x:Name="Btn_TraCuuKetQuaKhamBenh" Clicked="Btn_TraCuuKetQuaKhamBenh_Clicked"></Button>
+                        </Border>
+                        <Border Padding="0,0,0,0" Grid.Row="2" Grid.Column="1"  BackgroundColor="{StaticResource MauNenChucNang}">
+                            <Button  Text="Y tế tại nhà" BackgroundColor="{StaticResource MauNenChucNang}" TextColor="{StaticResource Black}" ImageSource="icon_y_te_tai_nha.png" ContentLayout="{OnPlatform 'Bottom,3',WinUI=Left }" FontAttributes="Bold"  LineBreakMode="WordWrap"  FontSize="{OnPlatform 11, WinUI=16}" x:Name="Btn_YTeTaiNha" Clicked="Btn_YTeTaiNha_Clicked"></Button>
+                        </Border>
+                        <Border Padding="0,0,0,0" Grid.Row="2" Grid.Column="2"  StrokeShape="RoundRectangle 0,0,0,20"  BackgroundColor="{StaticResource MauNenChucNang}">
+                            <Button  Text="Xem thêm" BackgroundColor="{StaticResource MauNenChucNang}" TextColor="{StaticResource Black}" ImageSource="icon_xem_them.png" ContentLayout="{OnPlatform 'Bottom,3',WinUI=Left }" FontAttributes="Bold"  LineBreakMode="WordWrap"  FontSize="{OnPlatform 11, WinUI=16}" x:Name="Btn_XemThem" Clicked="Btn_XemThem_Clicked"></Button>
+                        </Border>
+                    </Grid>
+                    <FlexLayout Direction="Column" Margin="15,0,15,0">
+                    <Label Background="Black" HeightRequest="150" Margin="0,10,0,0" Text="Hello" TextColor="White"  FontSize="Large"></Label>
+                    <Label BackgroundColor="Red" FontSize="Large" Text="Heloo"  HeightRequest="150" Margin="0,10,0,0"></Label>
+                    <Label BackgroundColor="Beige" FontSize="Large" Text="Heloo"  HeightRequest="150" Margin="0,10,0,0"></Label>
+                </FlexLayout>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</ContentPage>

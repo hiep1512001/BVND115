@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="BVND115.View.Login.Login"
+             Title="">
+    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" >
+        <Image Source="https://theme.hstatic.net/200000736895/1001102506/14/logo.png?v=1"
+            WidthRequest="270"
+            HeightRequest="100"></Image>
+        <Label Margin="0,20,0,0" Text="Vui lòng nhập căn cước công dân" FontAttributes="Bold" FontSize="14" HorizontalOptions="Center"></Label>
+        <Label Text="Sử dụng căn cước công dân để tạo tài khoản" FontSize="14" HorizontalOptions="Center" FontAttributes="Bold"></Label>
+        <Label Text="hoặc đăng nhập vào BV115" FontSize="14" HorizontalOptions="Center" FontAttributes="Bold"></Label>
+        <Border Margin="0,20,0,0" StrokeShape="RoundRectangle 10,10,10,10" Padding="10,0,10,0">
+            <Entry Placeholder="Nhập căn cước công dân"  Grid.Column="1" x:Name="EtrCCCD" VerticalOptions="Center" Keyboard="Numeric" MaxLength="10" />
+        </Border>
+        <ActivityIndicator IsRunning="False" IsVisible="false"  Color="{StaticResource Cyan100Accent}" x:Name="AcI_load"></ActivityIndicator>
+        <Button Margin="0,10,0,10" Text="ĐĂNG NHẬP" BackgroundColor="{StaticResource Cyan100Accent}" x:Name="BtnLogin" Clicked="BtnLogin_Clicked">
+        </Button>
+        <Label Margin="0,12,0,0" Text="Đăng nhập với tài khoản" HorizontalOptions="Center" FontAttributes="Bold"></Label>
+        <StackLayout HorizontalOptions="Center" >
+            <HorizontalStackLayout Margin="0,12,0,0">
+                <ImageButton Margin="0,0,10,0" WidthRequest="50" HeightRequest="50" Source="facebook_5968764.png" Clicked="BtnFLogin_Clicked">
+                    <ImageButton.Triggers>
+                        <Trigger TargetType="ImageButton"
+                                            Property="IsPressed"
+                                            Value="True">
+                            <Setter Property="Scale" Value=".8" />
+                        </Trigger>
+                        <Trigger TargetType="ImageButton"
+                                              Property="IsPressed"
+                                              Value="False">
+                            <Setter Property="Scale" Value="1" />
+                        </Trigger>
+                    </ImageButton.Triggers>
+                </ImageButton>
+                <ImageButton Margin="0,0,10,0" WidthRequest="50" HeightRequest="50" Source="google_300221.png" Clicked="BtnGLogin_Clicked">
+                    <ImageButton.Triggers>
+                        <Trigger TargetType="ImageButton"
+                                            Property="IsPressed"
+                                            Value="True">
+                            <Setter Property="Scale" Value=".8" />
+                        </Trigger>
+                        <Trigger TargetType="ImageButton"
+                                              Property="IsPressed"
+                                              Value="False">
+                            <Setter Property="Scale" Value="1" />
+                        </Trigger>
+                    </ImageButton.Triggers>
+                </ImageButton>
+                <ImageButton  WidthRequest="50" HeightRequest="50" Source="zalo_logo.png" Clicked="BtnZLogin_Clicked">
+                    <ImageButton.Triggers>
+                        <Trigger TargetType="ImageButton"
+                                            Property="IsPressed"
+                                            Value="True">
+                            <Setter Property="Scale" Value=".8" />
+                        </Trigger>
+                        <Trigger TargetType="ImageButton"
+                                              Property="IsPressed"
+                                              Value="False">
+                            <Setter Property="Scale" Value="1" />
+                        </Trigger>
+                    </ImageButton.Triggers>
+                </ImageButton>
+            </HorizontalStackLayout>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

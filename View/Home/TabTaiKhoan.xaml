@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BVND115.View.Home.TabTaiKhoan"
+             Title="TabTaiKhoan">
+    <StackLayout Orientation="Vertical">
+        <Grid BackgroundColor="{StaticResource Cyan100Accent}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="80"/>
+            </Grid.ColumnDefinitions>
+            <Label VerticalTextAlignment="Center" HorizontalOptions="Center" Grid.Row="0"  Grid.Column="0" TextColor="White" Text="NGUYỄN HOÀNG HIỆP" FontSize="18" FontAttributes="Bold" FontFamily="Lobster-Regular"></Label>
+            <StackLayout Orientation="Vertical" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" >
+                <ImageButton Margin="0,3,0,0" Source="icon_dang_xuat.png" HeightRequest="35" WidthRequest="35" x:Name="Imb_DangXuat" Clicked="Imb_DangXuat_Clicked"  Background="{StaticResource Cyan100Accent}">
+                    <ImageButton.Triggers>
+                        <Trigger TargetType="ImageButton"
+                                            Property="IsPressed"
+                                            Value="True">
+                            <Setter Property="Scale" Value=".8" />
+                        </Trigger>
+                        <Trigger TargetType="ImageButton"
+                                              Property="IsPressed"
+                                              Value="False">
+                            <Setter Property="Scale" Value="1" />
+                        </Trigger>
+                    </ImageButton.Triggers>
+                </ImageButton>
+                <Label Text="Đăng xuất" FontFamily="Lobster-Regular" TextColor="White" HorizontalTextAlignment="Center"></Label>
+            </StackLayout>
+        </Grid>
+        <ScrollView VerticalOptions="StartAndExpand">
+            <StackLayout Orientation="Vertical">
+                <Label Margin="10,10,10,0" Text="Điều khoản và quy định" FontAttributes="Bold" FontSize="18"></Label>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Border Margin="5,10,0,0" Grid.Row="0" Grid.Column="0" BackgroundColor="#03fcb1" Padding="2,2,2,2">
+                        <Image Source="icon_taikhoan_quydinhsudung.png" HeightRequest="30" WidthRequest="30" ></Image>
+                    </Border>
+                    <Label Margin="5,10,0,0" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Text="Quy định sử dụng" FontSize="15" >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
+                        <Image Margin="0,10,0,0" Source="icon_next.png" Grid.Row="0" Grid.Column="2" HeightRequest="15" WidthRequest="15"></Image>
+
+                    <Border Margin="5,10,0,0" Grid.Row="1" Grid.Column="0" BackgroundColor="#800d22" Padding="2,2,2,2">
+                        <Image Source="icon_taikhoan_chinhsachbaomat.png" HeightRequest="30" WidthRequest="30"  ></Image>
+                    </Border>
+                    <Label Margin="5,10,0,0" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" Text="Chính sách bảo mật"  FontSize="15"></Label>
+                    <Image Margin="0,10,0,0" Source="icon_next.png" Grid.Row="1" Grid.Column="2" HeightRequest="15" WidthRequest="15"></Image>
+
+                    <Border Margin="5,10,0,0" Grid.Row="2" Grid.Column="0" BackgroundColor="#03cafc" Padding="2,2,2,2" >
+                        <Image Source="icon_taikhoan_dieukhoansudung.png" HeightRequest="30" WidthRequest="30" ></Image>
+                    </Border>
+                    <Label Margin="5,10,0,0" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" Text="Điều khoản dịch vụ"  FontSize="15"></Label>
+                    <Image Margin="0,10,0,0" Source="icon_next.png" Grid.Row="2" Grid.Column="2" HeightRequest="15" WidthRequest="15"></Image>
+                </Grid>
+                <BoxView Margin="0,10,0,0" HeightRequest="2" Color="Gray"></BoxView>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Border Margin="5,10,0,0" Grid.Row="0" Grid.Column="0" BackgroundColor="#800d22" Padding="2,2,2,2">
+                        <Image  Source="icon_taikhoan_tongdai.png" HeightRequest="30" WidthRequest="30" ></Image>
+                    </Border>
+                    <Label Margin="5,10,0,0" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Text="Tổng đài chăm sóc khác hàng"  FontSize="15"></Label>
+                    <Image Margin="0,10,0,0" Source="icon_next.png" Grid.Row="0" Grid.Column="2" HeightRequest="15" WidthRequest="15"></Image>
+                </Grid>
+                <BoxView Margin="0,10,0,0" HeightRequest="2" Color="Gray"></BoxView>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Border Margin="5,10,0,0" Grid.Row="0" Grid.Column="0" BackgroundColor="#f2efc2" Padding="2,2,2,2">
+                        <Image  Source="icon_taikhoan_danhgiaungdung.png" HeightRequest="30" WidthRequest="30" BackgroundColor="#f2efc2"></Image>
+                    </Border>
+                    <Label Margin="5,10,0,0" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Text="Đánh giá ứng dụng"  FontSize="15"></Label>
+                    <Image Margin="0,10,0,0" Source="icon_next.png" Grid.Row="0" Grid.Column="2" HeightRequest="15" WidthRequest="15"></Image>
+
+                    <Border  Margin="5,15,0,0" Grid.Row="1" Grid.Column="0" BackgroundColor="#f2917e" Padding="2,2,2,2">
+                        <Image  Source="icon_taikhoan_chiase.png" HeightRequest="30" WidthRequest="30"></Image>
+                    </Border>
+                    <Label Margin="5,15,0,0" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" Text="Chia sẻ ứng dụng"  FontSize="15"></Label>
+                    <Image Margin="0,15,0,0" Source="icon_next.png" Grid.Row="1" Grid.Column="2" HeightRequest="15" WidthRequest="15"></Image>
+                </Grid>
+                <BoxView Margin="0,10,0,0" HeightRequest="2" Color="Gray"></BoxView>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Border Margin="5,10,0,0" Grid.Row="0" Grid.Column="0" BackgroundColor="#f2917e" Padding="2,2,2,2">
+                        <Image  Source="icon_taikhoan_cauhoithuonggap.png" HeightRequest="30" WidthRequest="30" ></Image>
+                    </Border>
+                    <Label Margin="5,10,0,0" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Text="Câu hỏi thường gặp"  FontSize="15"></Label>
+                    <Image Margin="0,10,0,0" Source="icon_next.png" Grid.Row="0" Grid.Column="2" HeightRequest="15" WidthRequest="15"></Image>
+                </Grid>
+                <Label Text=""></Label>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</ContentPage>

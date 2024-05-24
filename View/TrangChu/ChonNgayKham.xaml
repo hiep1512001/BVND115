@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BVND115.View.TrangChu.ChonNgayKham"
+             Title="ChonNgayKham">
+    <StackLayout Orientation="Vertical">
+        <Grid BackgroundColor="{StaticResource Cyan100Accent}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <ImageButton Grid.Column="0" Margin="3,0,0,0" Source="icon_go_back.png" HeightRequest="35" WidthRequest="35" x:Name="Imb_GoBack" Clicked="Imb_GoBack_Clicked" Background="{StaticResource Cyan100Accent}">
+                <ImageButton.Triggers>
+                    <Trigger TargetType="ImageButton"
+                                            Property="IsPressed"
+                                            Value="True">
+                        <Setter Property="Scale" Value=".8" />
+                    </Trigger>
+                    <Trigger TargetType="ImageButton"
+                                              Property="IsPressed"
+                                              Value="False">
+                        <Setter Property="Scale" Value="1" />
+                    </Trigger>
+                </ImageButton.Triggers>
+            </ImageButton>
+            <Label VerticalTextAlignment="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1" TextColor="White" Text="VUI LÒNG CHỌN NGÀY KHÁM" FontSize="18" FontAttributes="Bold" FontFamily="Lobster-Regular"></Label>
+        </Grid>
+        <ActivityIndicator IsRunning="False" IsVisible="false"  Color="{StaticResource Cyan100Accent}" x:Name="AcI_load"></ActivityIndicator>
+        <ScrollView VerticalOptions="StartAndExpand" Margin="0,20,0,0">
+            <StackLayout Orientation="Vertical">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalOptions="Center">
+                        <BoxView  WidthRequest="30" HeightRequest="30" Color="{StaticResource Primary}"></BoxView>
+                        <Label VerticalTextAlignment="Center" Text="Hôm nay" Margin="2,0,0,0"></Label>
+                    </StackLayout>
+                    <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Horizontal"  HorizontalOptions="Center">
+                        <BoxView  WidthRequest="30" HeightRequest="30" Color="{StaticResource Blue200Accent}"></BoxView>
+                        <Label VerticalTextAlignment="Center" Text="Còn trống" Margin="2,0,0,0"></Label>
+                    </StackLayout>
+                    <StackLayout Grid.Row="0" Grid.Column="2" Orientation="Horizontal"  HorizontalOptions="Center">
+                        <BoxView  WidthRequest="30" HeightRequest="30" Color="{StaticResource Gray300}"></BoxView>
+                        <Label VerticalTextAlignment="Center" Text="Kín lịch" Margin="2,0,0,0"></Label>
+                    </StackLayout>
+                </Grid>
+                <Border  Margin="10,20,10,0"  StrokeShape="RoundRectangle 10,10,10,10" >
+                    <Grid BackgroundColor="{StaticResource Cyan100Accent}" Padding="0,10,0,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="7*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <ImageButton Grid.Row="0" Grid.Column="0" Source="icon_previous_year.png" BackgroundColor="{StaticResource Cyan100Accent}" HeightRequest="30" WidthRequest="30" x:Name="Imb_Previous" Clicked="Imb_Previous_Clicked">
+                            <ImageButton.Triggers>
+                                <Trigger TargetType="ImageButton"
+                                            Property="IsPressed"
+                                            Value="True">
+                                    <Setter Property="Scale" Value=".8" />
+                                </Trigger>
+                                <Trigger TargetType="ImageButton"
+                                              Property="IsPressed"
+                                              Value="False">
+                                    <Setter Property="Scale" Value="1" />
+                                </Trigger>
+                            </ImageButton.Triggers>
+                        </ImageButton>
+                        <Label Grid.Column="1" Grid.Row="0" TextColor="White" FontSize="18" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  BackgroundColor="{StaticResource Cyan100Accent}" x:Name="Lbl_ThangNam"></Label>
+                        <ImageButton Grid.Row="0" Grid.Column="2" Source="icon_next_year.png" BackgroundColor="{StaticResource Cyan100Accent}" HeightRequest="30" WidthRequest="30" x:Name="imb_Next" Clicked="imb_Next_Clicked" >
+                            <ImageButton.Triggers>
+                                <Trigger TargetType="ImageButton"
+                                            Property="IsPressed"
+                                            Value="True">
+                                    <Setter Property="Scale" Value=".8" />
+                                </Trigger>
+                                <Trigger TargetType="ImageButton"
+                                              Property="IsPressed"
+                                              Value="False">
+                                    <Setter Property="Scale" Value="1" />
+                                </Trigger>
+                            </ImageButton.Triggers>
+                        </ImageButton>
+                    </Grid>
+                </Border>
+                <Grid Margin="10,10,10,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" Text="CN" FontSize="16"></Label>
+                    <Label Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" Text="T2" FontSize="16"></Label>
+                    <Label Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center" Text="T3" FontSize="16"></Label>
+                    <Label Grid.Row="0" Grid.Column="3" HorizontalTextAlignment="Center" Text="T4" FontSize="16"></Label>
+                    <Label Grid.Row="0" Grid.Column="4" HorizontalTextAlignment="Center" Text="T5" FontSize="16"></Label>
+                    <Label Grid.Row="0" Grid.Column="5" HorizontalTextAlignment="Center" Text="T6" FontSize="16"></Label>
+                    <Label Grid.Row="0" Grid.Column="6" HorizontalTextAlignment="Center" Text="T7" FontSize="16"></Label>
+                </Grid>
+                <CollectionView ItemsSource="{Binding}" Margin="10,0,10,0" x:Name="Csv_Ngay" SelectionChanged="Csv_Ngay_SelectionChanged" SelectionMode="Single" >
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
+                        Span="7" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Margin="2,2,2,2" BackgroundColor="{StaticResource Blue200Accent}" IsVisible="{Binding Isvisible}" >
+                                <Label  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding Text}" IsVisible="{Binding Isvisible}" FontSize="16" HeightRequest="55" WidthRequest="55"></Label>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</ContentPage>

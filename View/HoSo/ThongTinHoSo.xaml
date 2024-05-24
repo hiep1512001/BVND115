@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BVND115.View.HoSo.ThongTinHoSo"
+             Title="ThongTinHoSo">
+    <StackLayout>
+        <Grid BackgroundColor="{StaticResource Cyan100Accent}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="80"/>
+            </Grid.ColumnDefinitions>
+            <ImageButton Grid.Column="0" Margin="3,0,0,0" Source="icon_go_back.png" HeightRequest="35" WidthRequest="35" x:Name="Imb_GoBack" Clicked="Imb_GoBack_Clicked" Background="{StaticResource Cyan100Accent}">
+                <ImageButton.Triggers>
+                    <Trigger TargetType="ImageButton"
+                                            Property="IsPressed"
+                                            Value="True">
+                        <Setter Property="Scale" Value=".8" />
+                    </Trigger>
+                    <Trigger TargetType="ImageButton"
+                                              Property="IsPressed"
+                                              Value="False">
+                        <Setter Property="Scale" Value="1" />
+                    </Trigger>
+                </ImageButton.Triggers>
+            </ImageButton>
+            <Label VerticalTextAlignment="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1" TextColor="White" Text="XÁC NHẬN THÔNG TIN" FontSize="18" FontAttributes="Bold" FontFamily="Lobster-Regular"></Label>
+            <StackLayout Orientation="Vertical" VerticalOptions="Center" Grid.Row="0" Grid.Column="2" >
+                <ImageButton Margin="0,3,0,0" Source="icon_delete.png" HeightRequest="35" WidthRequest="35" Background="{StaticResource Cyan100Accent}">
+                    <ImageButton.Triggers>
+                        <Trigger TargetType="ImageButton"
+                                            Property="IsPressed"
+                                            Value="True">
+                            <Setter Property="Scale" Value=".8" />
+                        </Trigger>
+                        <Trigger TargetType="ImageButton"
+                                              Property="IsPressed"
+                                              Value="False">
+                            <Setter Property="Scale" Value="1" />
+                        </Trigger>
+                    </ImageButton.Triggers>
+                </ImageButton>
+                <Label Text="Xóa hồ sơ" FontFamily="Lobster-Regular" TextColor="White" HorizontalTextAlignment="Center"></Label>
+            </StackLayout>
+        </Grid>
+        <ScrollView VerticalOptions="StartAndExpand">
+            <StackLayout Orientation="Vertical">
+                <Label Margin="10,20,20,0" Text="THÔNG TIN BỆNH NHÂN" FontAttributes="Bold" FontSize="20"/>
+                <Grid Margin="0,20,0,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Margin="10,0,0,0" Grid.Row="0" Grid.Column="0" Text="Họ và tên" FontSize="16" />
+                    <Label Margin="15,0,0,0" Grid.Row="0" Grid.Column="1" Text="NGUYỄN HOÀNG HIỆP" FontSize="16"  />
+                    
+                    <BoxView Margin="0,20,0,20" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Color="Gray" HeightRequest="1"></BoxView>
+
+                    <Label Margin="10,0,0,0" Grid.Row="2" Grid.Column="0" Text="Mã số bệnh nhân" FontSize="16"  />
+                    <Label Margin="15,00,0,0" Grid.Row="2" Grid.Column="1" Text="MP-231031H44Q6A" FontSize="16" />
+
+                    <BoxView Margin="0,20,0,20" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Color="Black" HeightRequest="1"></BoxView>
+
+                    <Label Margin="10,0,0,0" Grid.Row="4" Grid.Column="0" Text="Ngày sinh" FontSize="16" />
+                    <Label Margin="15,0,0,0" Grid.Row="4" Grid.Column="1" Text="15/01/2001" FontSize="16" />
+
+                    <BoxView Margin="0,20,0,20" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Color="Black" HeightRequest="1"></BoxView>
+
+                    <Label Margin="10,0,0,0" Grid.Row="6" Grid.Column="0" Text="Giới tính" FontSize="16"  />
+                    <Label Margin="15,0,0,0" Grid.Row="6" Grid.Column="1" Text="Nam" FontSize="16" />
+
+                    <BoxView Margin="0,20,0,20" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Color="Black" HeightRequest="1"></BoxView>
+
+                    <Label Margin="10,0,0,0" Grid.Row="8" Grid.Column="0" Text="CMND" FontSize="16"  />
+                    <Label Margin="15,0,0,0" Grid.Row="8" Grid.Column="1" Text="9802110234" FontSize="16" />
+
+                    <BoxView Margin="0,20,0,20" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Color="Black" HeightRequest="1"></BoxView>
+
+                    <Label Margin="10,0,0,0" Grid.Row="10" Grid.Column="0" Text="Mã bảo hiểm" FontSize="16" />
+                    <Label Margin="15,0,0,0" Grid.Row="10" Grid.Column="1" Text="GD456829987254" FontSize="16" />
+
+                    <BoxView Margin="0,20,0,20" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Color="Black" HeightRequest="1"></BoxView>
+
+                    <Label Margin="10,0,0,0" Grid.Row="12" Grid.Column="0" Text="Nghề nghiêp" FontSize="16" />
+                    <Label Margin="15,0,0,0" Grid.Row="12" Grid.Column="1" Text="Sinh viên" FontSize="16" />
+
+                    <BoxView Margin="0,20,0,20" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" Color="Black" HeightRequest="1"></BoxView>
+
+                    <Label Margin="10,0,0,0" Grid.Row="14" Grid.Column="0" Text="Số điện thoại" FontSize="16" />
+                    <Label Margin="15,0,0,0" Grid.Row="14" Grid.Column="1" Text="0812356946" FontSize="16" />
+
+                    <BoxView Margin="0,20,0,20" Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2" Color="Black" HeightRequest="1"></BoxView>
+
+                    <Label Margin="10,0,0,0" Grid.Row="16" Grid.Column="0" Text="Email" FontSize="16" />
+                    <Label Margin="15,0,0,0" Grid.Row="16" Grid.Column="1" Text="Chưa cập nhật" FontSize="16" />
+
+                    <BoxView Margin="0,20,0,20" Grid.Row="17" Grid.Column="0" Grid.ColumnSpan="2" Color="Black" HeightRequest="1"></BoxView>
+
+                    <Label Margin="10,0,0,0" Grid.Row="18" Grid.Column="0" Text="Địa chỉ" FontSize="16" />
+                    <Label Margin="15,0,0,0" Grid.Row="18" Grid.Column="1" Text="Ấp 3, Mỹ Yên, Bến Lức, Long An" FontSize="16" />
+                </Grid>
+                <Button Text="CHỈNH SỬA"  BackgroundColor="{StaticResource Cyan100Accent}"></Button>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</ContentPage>

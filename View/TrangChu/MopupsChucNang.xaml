@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mopups:PopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BVND115.View.TrangChu.MopupsChucNang"
+             xmlns:mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+             xmlns:mopupsanim="clr-namespace:Mopups.Animations;assembly=Mopups"
+                  CloseWhenBackgroundIsClicked="True" BackgroundColor="{StaticResource MauNenChucNang}" >
+    <mopups:PopupPage.Animation>
+        <mopupsanim:ScaleAnimation
+                                  DurationIn="200"
+                                  DurationOut="100"
+                                  EasingIn="SinOut"
+                                  EasingOut="SinIn"
+                                  HasBackgroundAnimation="true"
+                                  PositionIn="Bottom"
+                                  PositionOut="Bottom" />
+    </mopups:PopupPage.Animation>
+    <StackLayout Orientation="Vertical" BackgroundColor="{StaticResource Primary}"  VerticalOptions="Center">
+        <Label Text="DANH SÁCH CHỨC NĂNG" FontSize="18" TextColor="White" HorizontalTextAlignment="Center" Margin="0,5,0,0"></Label>
+        <Grid Margin="15,5,15,10" RowSpacing="0" ColumnSpacing="0"  >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{OnPlatform *}" />
+                <RowDefinition Height="{OnPlatform *}" />
+                <RowDefinition Height="{OnPlatform *}" />
+                <RowDefinition Height="{OnPlatform *}" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Border Padding="0,0,0,0" Grid.Row="0" Grid.Column="0" StrokeShape="RoundRectangle 20,0,0,0" BackgroundColor="{StaticResource MauNenChucNang}" >
+                <Button  Text="Đặt khám tại cơ sở" BackgroundColor="{StaticResource MauNenChucNang}" TextColor="{StaticResource Black}" ImageSource="icon_dat_kham_co_so.png" ContentLayout="{OnPlatform 'Bottom,3',WinUI=Left }" FontAttributes="Bold" LineBreakMode="WordWrap"  FontSize="{OnPlatform 11, WinUI=16}"></Button>
+            </Border>
+            <Border Padding="0,0,0,0" Grid.Row="0" Grid.Column="1"  BackgroundColor="{StaticResource MauNenChucNang}" >
+                <Button  Text="Đặt khám khám bác sĩ" BackgroundColor="{StaticResource MauNenChucNang}" TextColor="{StaticResource Black}" ImageSource="icon_dat_kham_bac_si.png" ContentLayout="{OnPlatform 'Bottom,3',WinUI=Left }" FontAttributes="Bold"  LineBreakMode="WordWrap"  FontSize="{OnPlatform 11, WinUI=16}"  x:Name="Btn_DatKhamBacSi" Clicked="Btn_DatKhamBacSi_Clicked"></Button>
+            </Border>
+            <Border Padding="0,0,0,0" Grid.Row="0" Grid.Column="2" StrokeShape="RoundRectangle 0,20,0,0"  BackgroundColor="{StaticResource MauNenChucNang}">
+                <Button  Text="Tư vấn khám bệnh qua video" BackgroundColor="{StaticResource MauNenChucNang}" TextColor="{StaticResource Black}" ImageSource="icon_tu_van_kham_benh.png" ContentLayout="{OnPlatform 'Bottom,3',WinUI=Left }" FontAttributes="Bold"   LineBreakMode="WordWrap"  FontSize="{OnPlatform 11, WinUI=16}"></Button>
+            </Border>
+            <Border Padding="0,0,0,0" Grid.Row="1" Grid.Column="0"  BackgroundColor="{StaticResource MauNenChucNang}">
+                <Button  Text="Gói sức khỏe toàn diện" BackgroundColor="{StaticResource MauNenChucNang}" TextColor="{StaticResource Black}" ImageSource="icon_goi_suc_khoe.png" ContentLayout="{OnPlatform 'Bottom,3',WinUI=Left }" FontAttributes="Bold"  LineBreakMode="WordWrap"  FontSize="{OnPlatform 11, WinUI=16}"></Button>
+            </Border>
+            <Border Padding="0,0,0,0" Grid.Row="1" Grid.Column="1"  BackgroundColor="{StaticResource MauNenChucNang}">
+                <Button  Text="Đặt lịch xét nghiệm" BackgroundColor="{StaticResource MauNenChucNang}" TextColor="{StaticResource Black}" ImageSource="icon_dat_lich_xet_nghiem.png" ContentLayout="{OnPlatform 'Bottom,3',WinUI=Left }" FontAttributes="Bold" LineBreakMode="WordWrap"  FontSize="{OnPlatform 11, WinUI=16}"></Button>
+            </Border>
+            <Border Padding="0,0,0,0" Grid.Row="1" Grid.Column="2"  BackgroundColor="{StaticResource MauNenChucNang}">
+                <Button  Text="Đặt lịch tiêm chủng" BackgroundColor="{StaticResource MauNenChucNang}" TextColor="{StaticResource Black}" ImageSource="icon_dat_lich_tiem_chung.png" ContentLayout="{OnPlatform 'Bottom,3',WinUI=Left }" FontAttributes="Bold"  LineBreakMode="WordWrap"  FontSize="{OnPlatform 11, WinUI=16}"></Button>
+            </Border>
+            <Border Padding="0,0,0,0" Grid.Row="2" Grid.Column="0" StrokeShape="RoundRectangle 0,0,0,0"  BackgroundColor="{StaticResource MauNenChucNang}">
+                <Button  Text="Tra cứu kết quả khám bệnh" BackgroundColor="{StaticResource MauNenChucNang}" TextColor="{StaticResource Black}" ImageSource="icon_tra_cuu_ket_qua.png" ContentLayout="{OnPlatform 'Bottom,3',WinUI=Left }" FontAttributes="Bold"  LineBreakMode="WordWrap"  FontSize="{OnPlatform 11, WinUI=16}"></Button>
+            </Border>
+            <Border Padding="0,0,0,0" Grid.Row="2" Grid.Column="1"  BackgroundColor="{StaticResource MauNenChucNang}">
+                <Button  Text="Y tế tại nhà" BackgroundColor="{StaticResource MauNenChucNang}" TextColor="{StaticResource Black}" ImageSource="icon_y_te_tai_nha.png" ContentLayout="{OnPlatform 'Bottom,3',WinUI=Left }" FontAttributes="Bold"  LineBreakMode="WordWrap"  FontSize="{OnPlatform 11, WinUI=16}" x:Name="Btn_YTeTaiNha"></Button>
+            </Border>
+            <Border Padding="0,0,0,0" Grid.Row="2" Grid.Column="2"  StrokeShape="RoundRectangle 0,0,0,0"  BackgroundColor="{StaticResource MauNenChucNang}">
+                <Button  Text="Thanh toán viện phí" BackgroundColor="{StaticResource MauNenChucNang}" TextColor="{StaticResource Black}" ImageSource="icon_thanhtoanvienphi.png" ContentLayout="{OnPlatform 'Bottom,3',WinUI=Left }" FontAttributes="Bold"  LineBreakMode="WordWrap"  FontSize="{OnPlatform 11, WinUI=16}" x:Name="Btn_XemThem"></Button>
+            </Border>
+            <Border Padding="0,0,0,0" Grid.Row="3" Grid.Column="0" StrokeShape="RoundRectangle 0,0,20,0"  BackgroundColor="{StaticResource MauNenChucNang}">
+                <Button  Text="Hướng dẫn đặt khám" BackgroundColor="{StaticResource MauNenChucNang}" TextColor="{StaticResource Black}" ImageSource="icon_huongdandatkham.png" ContentLayout="{OnPlatform 'Bottom,3',WinUI=Left }" FontAttributes="Bold"  LineBreakMode="WordWrap"  FontSize="{OnPlatform 11, WinUI=16}"></Button>
+            </Border>
+            <Border Padding="0,0,0,0" Grid.Row="3" Grid.Column="1"  BackgroundColor="{StaticResource MauNenChucNang}">
+                <Button  Text="Đặt khám" BackgroundColor="{StaticResource MauNenChucNang}" TextColor="{StaticResource Black}" ImageSource="icon_datkham.png" ContentLayout="{OnPlatform 'Bottom,3',WinUI=Left }" FontAttributes="Bold"  LineBreakMode="WordWrap"  FontSize="{OnPlatform 11, WinUI=16}" ></Button>
+            </Border>
+            <Border Padding="0,0,0,0" Grid.Row="3" Grid.Column="2"  StrokeShape="RoundRectangle 0,0,0,20"  BackgroundColor="{StaticResource MauNenChucNang}">
+                <Button  Text="Thoát" BackgroundColor="{StaticResource MauNenChucNang}" TextColor="{StaticResource Black}" ImageSource="icon_thoat.png" ContentLayout="{OnPlatform 'Bottom,3',WinUI=Left }" FontAttributes="Bold"  LineBreakMode="WordWrap"  FontSize="{OnPlatform 11, WinUI=16}" x:Name="Btn_Thoat" Clicked="Btn_Thoat_Clicked"></Button>
+            </Border>
+        </Grid>
+    </StackLayout>
+</mopups:PopupPage>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="BVND115.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:BVND115"
+    xmlns:tabs="clr-namespace:BVND115.View.Home"
+    Shell.FlyoutBehavior="Disabled">
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" >
+        <ShellContent Title="Trang chủ"                 
+                      Icon="icon_trang_chu.png"
+                      ContentTemplate="{DataTemplate tabs:TabTrangChu}" />
+        <ShellContent Title="Hồ sơ"
+                      Icon="icon_ho_so.png"
+                      ContentTemplate="{DataTemplate tabs:TabHoSo}" />
+        <ShellContent Title="Phiếu khám"
+                      Icon="icon_phieu_kham.png"
+                      ContentTemplate="{DataTemplate tabs:TabPhieuKham}" />
+        <ShellContent Title="Thông báo"
+                      Icon="icon_thong_bao.png"
+                      ContentTemplate="{DataTemplate tabs:TabThongBao}" />
+        <ShellContent Title="Tài khoản"
+                      Icon="icon_tai_khoan.png"
+                      ContentTemplate="{DataTemplate tabs:TabTaiKhoan}" />
+    </FlyoutItem>
+</Shell>

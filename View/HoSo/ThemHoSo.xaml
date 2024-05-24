@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BVND115.View.HoSo.ThemHoSo"
+             Title="THÔNG TIN" >
+    <StackLayout Orientation="Vertical">
+        <Grid BackgroundColor="{StaticResource Cyan100Accent}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="80"/>
+            </Grid.ColumnDefinitions>
+            <ImageButton Grid.Column="0" Margin="3,0,0,0" Source="icon_go_back.png" HeightRequest="35" WidthRequest="35" x:Name="Imb_GoBack" Clicked="Imb_GoBack_Clicked" Background="{StaticResource Cyan100Accent}">
+                <ImageButton.Triggers>
+                    <Trigger TargetType="ImageButton"
+                                            Property="IsPressed"
+                                            Value="True">
+                        <Setter Property="Scale" Value=".8" />
+                    </Trigger>
+                    <Trigger TargetType="ImageButton"
+                                              Property="IsPressed"
+                                              Value="False">
+                        <Setter Property="Scale" Value="1" />
+                    </Trigger>
+                </ImageButton.Triggers>
+            </ImageButton>
+            <Label VerticalTextAlignment="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1" TextColor="White" Text="THÔNG TIN HỒ SƠ" FontSize="18" FontAttributes="Bold" FontFamily="Lobster-Regular"></Label>
+            <StackLayout Orientation="Vertical" VerticalOptions="Center" Grid.Row="0" Grid.Column="2" IsVisible="{OnPlatform true, WinUI= false}" >
+                <ImageButton Margin="0,3,0,0" Source="icon_scan_qrcode.png" HeightRequest="35" WidthRequest="35"   Clicked="ScanQRCode" Background="{StaticResource Cyan100Accent}">
+                    <ImageButton.Triggers>
+                        <Trigger TargetType="ImageButton"
+                                            Property="IsPressed"
+                                            Value="True">
+                            <Setter Property="Scale" Value=".8" />
+                        </Trigger>
+                        <Trigger TargetType="ImageButton"
+                                              Property="IsPressed"
+                                              Value="False">
+                            <Setter Property="Scale" Value="1" />
+                        </Trigger>
+                    </ImageButton.Triggers>
+                </ImageButton>
+                <Label Text="Quét CCCD" FontFamily="Lobster-Regular" TextColor="White" HorizontalTextAlignment="Center"></Label>
+            </StackLayout>
+        </Grid>
+        <ActivityIndicator IsRunning="False" IsVisible="false"  Color="{StaticResource Cyan100Accent}" x:Name="AcI_load"></ActivityIndicator>
+        <ScrollView VerticalOptions="StartAndExpand">
+            <StackLayout Orientation="Vertical" BindingContext="{}" >
+                <Label Text="Thông tin bệnh nhân" FontAttributes="Bold" FontFamily="Lobster-Regular" FontSize="20" HorizontalOptions="Center"></Label>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Họ và tên (có dấu)" Margin="10,10,5,0" FontSize="16" ></Label>
+                    <Label Text="*" TextColor="Red" Margin="0,10,10,0" FontSize="16"></Label>
+                </StackLayout>
+                <Border Margin="10,0,10,0" StrokeShape="RoundRectangle 20,20,20,20" StrokeThickness="2" Padding="5,0,0,0">
+                    <Entry Placeholder="Nhập họ tên" FontSize="16" x:Name="Etr_Ten"></Entry>
+                </Border>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Ngày sinh" Margin="10,10,5,0" FontSize="16" ></Label>
+                    <Label Text="*" TextColor="Red" Margin="0,10,10,0" FontSize="16"></Label>
+                </StackLayout>
+                <Border Margin="10,0,10,0" StrokeShape="RoundRectangle 20,20,20,20" StrokeThickness="2" Padding="5,0,0,0">
+                    <Entry Placeholder="Ngày / Tháng / Năm" FontSize="16" x:Name="Etr_NgaySinh" TextChanged="Etr_NgaySinh_TextChanged" Keyboard="Numeric" MaxLength="10" ></Entry>
+                </Border>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Giới tính" Margin="10,10,5,0" FontSize="16" ></Label>
+                    <Label Text="*" TextColor="Red" Margin="0,10,10,0" FontSize="16"></Label>
+                </StackLayout>
+                <Grid Margin="10,0,10,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0"  StrokeShape="RoundRectangle 20,20,20,20" StrokeThickness="2">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="60"/>
+                            </Grid.ColumnDefinitions>
+                            <RadioButton Margin="10,0,0,0" Content="Nam" x:Name="Rdb_Nam" Grid.Column="0" IsChecked="True"  GroupName="gioitinh" />
+                            <Image Source="icon_thongtinhoso_gioitinh_nam.png" Grid.Column="1" WidthRequest="30" HeightRequest="30"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Grid.Column="1"  StrokeShape="RoundRectangle 20,20,20,20" StrokeThickness="2">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="60"/>
+                            </Grid.ColumnDefinitions>
+                            <RadioButton Margin="10,0,0,0" Content="Nữ" x:Name="Rdb_Nu"  GroupName="gioitinh" />
+                            <Image Source="icon_thongtinhoso_gioitinh_nu.png" Grid.Column="1" WidthRequest="30" HeightRequest="30"/>
+
+                        </Grid>
+                    </Border>
+                </Grid>
+                <Label Text="Mã bảo hiểm y tế" Margin="10,10,10,0" FontSize="16" ></Label>
+                <Border Margin="10,0,10,0" StrokeShape="RoundRectangle 20,20,20,20" StrokeThickness="2" Padding="5,0,0,0">
+                    <Entry Placeholder="Mã bảo hiểm y tế" FontSize="16"></Entry>
+                </Border>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Căn cước công dân" Margin="10,10,5,0" FontSize="16" ></Label>
+                    <Label Text="*" TextColor="Red" Margin="0,10,10,0" FontSize="16"></Label>
+                </StackLayout>
+                <Border Margin="10,0,10,0" StrokeShape="RoundRectangle 20,20,20,20" StrokeThickness="2" Padding="5,0,0,0">
+                    <Entry Placeholder="Căn cước công dân" FontSize="16" Keyboard="Numeric" x:Name="Etr_CCCD"></Entry>
+                </Border>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Nghề nghiệp" Margin="10,10,5,0" FontSize="16" ></Label>
+                    <Label Text="*" TextColor="Red" Margin="0,10,10,0" FontSize="16"></Label>
+                </StackLayout>
+                <Border Margin="10,0,10,0" StrokeShape="RoundRectangle 20,20,20,20" StrokeThickness="2" Padding="5,0,0,0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition  />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition ></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Margin="0,0,0,0" Text="Chọn nghề nghiệp" VerticalTextAlignment="Center"  FontSize="16" HeightRequest="45" TextColor="{StaticResource Gray200}" >
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer ></TapGestureRecognizer>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Image Grid.Column="1" Source="icon_next.png" WidthRequest="20" HeightRequest="20" />
+                    </Grid>
+                </Border>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Số điện thoại" Margin="10,10,5,0" FontSize="16" ></Label>
+                    <Label Text="*" TextColor="Red" Margin="0,10,10,0" FontSize="16"></Label>
+                </StackLayout>
+                <Border Margin="10,0,10,0" StrokeShape="RoundRectangle 20,20,20,20" StrokeThickness="2" Padding="5,0,0,0">
+                    <Entry Placeholder="Số điện thoại" FontSize="16" Keyboard="Telephone"></Entry>
+                </Border>
+                <Label Text="Email" Margin="10,10,10,0" FontSize="16" ></Label>
+                <Border Margin="10,0,10,0" StrokeShape="RoundRectangle 20,20,20,20" StrokeThickness="2" Padding="5,0,0,0">
+                    <Entry Placeholder="Email" FontSize="16" Keyboard="Email"></Entry>
+                </Border>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Quốc gia" Margin="10,10,5,0" FontSize="16" ></Label>
+                    <Label Text="*" TextColor="Red" Margin="0,10,10,0" FontSize="16"></Label>
+                </StackLayout>
+                <Border Margin="10,0,10,0" StrokeShape="RoundRectangle 20,20,20,20" StrokeThickness="2" Padding="5,0,0,0">
+                    <Entry Placeholder="Quốc gia" FontSize="16" x:Name="Etr_QuocGia" ></Entry>
+                </Border>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Dân tộc" Margin="10,10,5,0" FontSize="16" ></Label>
+                    <Label Text="*" TextColor="Red" Margin="0,10,10,0" FontSize="16"></Label>
+                </StackLayout>
+                <Border Margin="10,0,10,0" StrokeShape="RoundRectangle 20,20,20,20" StrokeThickness="2" Padding="5,0,0,0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition  />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition ></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Margin="0,0,0,0" Text="Chọn dân tộc" VerticalTextAlignment="Center"  FontSize="16" HeightRequest="45" TextColor="{StaticResource Gray200}" >
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer ></TapGestureRecognizer>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Image Grid.Column="1" Source="icon_next.png" WidthRequest="20" HeightRequest="20" />
+                    </Grid>
+                </Border>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Tỉnh / Thành Phố" Margin="10,10,5,0" FontSize="16" ></Label>
+                    <Label Text="*" TextColor="Red" Margin="0,10,10,0" FontSize="16"></Label>
+                </StackLayout>
+                <Border Margin="10,0,10,0" StrokeShape="RoundRectangle 20,20,20,20" StrokeThickness="2" Padding="5,0,0,0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition  />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition ></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Margin="0,0,0,0" Text="Tỉnh / Thành Phố" VerticalTextAlignment="Center" x:Name="Etr_Tinh" FontSize="16" HeightRequest="45" TextColor="{StaticResource Gray200}" >
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Etr_Tinh_Click"></TapGestureRecognizer>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Image Grid.Column="1" Source="icon_next.png" WidthRequest="20" HeightRequest="20" />
+                    </Grid>
+                </Border>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Huyện / Quận" Margin="10,10,5,0" FontSize="16" ></Label>
+                    <Label Text="*" TextColor="Red" Margin="0,10,10,0" FontSize="16"></Label>
+                </StackLayout>
+                <Border Margin="10,0,10,0" StrokeShape="RoundRectangle 20,20,20,20" StrokeThickness="2" Padding="5,0,0,0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition  />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition ></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Margin="0,0,0,0" Text="Huyện / Quận" VerticalTextAlignment="Center" x:Name="Etr_Huyen" FontSize="16" HeightRequest="45" TextColor="{StaticResource Gray200}" >
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Etr_Huyen_Click"></TapGestureRecognizer>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Image Grid.Column="1" Source="icon_next.png" WidthRequest="20" HeightRequest="20" />
+                    </Grid>
+                </Border>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Xã / Phường" Margin="10,10,5,0" FontSize="16" ></Label>
+                    <Label Text="*" TextColor="Red" Margin="0,10,10,0" FontSize="16"></Label>
+                </StackLayout>
+                <Border Margin="10,0,10,0" StrokeShape="RoundRectangle 20,20,20,20" StrokeThickness="2" Padding="5,0,0,0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition  />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition ></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Margin="0,0,0,0" Text="Xã / Phường" VerticalTextAlignment="Center" x:Name="Etr_xa" FontSize="16" HeightRequest="45" TextColor="{StaticResource Gray200}" >
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Etr_Xa_Click"></TapGestureRecognizer>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Image Grid.Column="1" Source="icon_next.png" WidthRequest="20" HeightRequest="20" />
+                    </Grid>
+                </Border>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Ấp 3" Margin="10,10,5,0" FontSize="16" ></Label>
+                    <Label Text="*" TextColor="Red" Margin="0,10,10,0" FontSize="16"></Label>
+                </StackLayout>
+                <Border Margin="10,0,10,0" StrokeShape="RoundRectangle 20,20,20,20" StrokeThickness="2" Padding="5,0,0,0">
+                    <Entry Placeholder="Địa chỉ" FontSize="16" x:Name="Etr_DiaChi"></Entry>
+                </Border>
+                <Button Text="TẠO MỚI HỒ SƠ" FontSize="16" Margin="10,20,10,10" BackgroundColor="{StaticResource Cyan100Accent}" CornerRadius="30" x:Name="Btn_ThemHoSo" Clicked="Btn_ThemHoSo_Clicked"></Button>
+            </StackLayout>
+        </ScrollView>
+        
+    </StackLayout>
+
+</ContentPage>

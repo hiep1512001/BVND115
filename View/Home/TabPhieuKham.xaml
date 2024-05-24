@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BVND115.View.Home.TabPhieuKham"
+             Title="TabPhieuKham">
+    <StackLayout Orientation="Vertical">
+        <Grid BackgroundColor="{StaticResource Cyan100Accent}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Label VerticalTextAlignment="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" TextColor="White" Text="DANH SÁCH PHIẾU KHÁM" FontSize="18" FontAttributes="Bold" FontFamily="Lobster-Regular"></Label>
+        </Grid>
+        <ScrollView Orientation="Horizontal" Margin="10,10,10,0" >
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Đã thanh toán" BackgroundColor="{StaticResource Cyan100Accent}" x:Name="Btn_DaThanhToan"  CornerRadius="20"/>
+                <Button Text="Chưa thanh toán" BackgroundColor="#dcded9" TextColor="Black" Margin="10,0,0,0" x:Name="Btn_ChuaThanhToan" CornerRadius="20"/>
+                <Button Text="Đã khám" BackgroundColor="#dcded9" TextColor="Black" Margin="10,0,0,0" x:Name="Btn_DaKham" CornerRadius="20"/>
+                <Button Text="Đã hủy" BackgroundColor="#dcded9" TextColor="Black" Margin="10,0,0,0" x:Name="Btn_DaHuy" CornerRadius="20"/>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</ContentPage>

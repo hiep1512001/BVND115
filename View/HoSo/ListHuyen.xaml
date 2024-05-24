@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BVND115.View.HoSo.ListHuyen"
+             Title="ListHuyen">
+    <StackLayout Orientation="Vertical">
+        <Grid BackgroundColor="{StaticResource Cyan100Accent}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <ImageButton Grid.Column="0" Margin="3,0,0,0" Source="icon_go_back.png" HeightRequest="35" WidthRequest="35" x:Name="Imb_GoBack" Clicked="Imb_GoBack_Clicked"  Background="{StaticResource Cyan100Accent}">
+                <ImageButton.Triggers>
+                    <Trigger TargetType="ImageButton"
+                                          Property="IsPressed"
+                                          Value="True">
+                        <Setter Property="Scale" Value=".8" />
+                    </Trigger>
+                    <Trigger TargetType="ImageButton"
+                                            Property="IsPressed"
+                                            Value="False">
+                        <Setter Property="Scale" Value="1" />
+                    </Trigger>
+                </ImageButton.Triggers>
+            </ImageButton>
+            <Label VerticalTextAlignment="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1" TextColor="White" Text="DANH SÁCH HUYỆN / QUẬN" FontSize="18" FontAttributes="Bold" FontFamily="Lobster-Regular"></Label>
+        </Grid>
+        <SearchBar Placeholder="Nhập tên Huyện / Quận cần tìm" x:Name="Sb_TimKiem" TextChanged="Sb_TimKiem_TextChanged"></SearchBar>
+        <ListView ItemsSource="{Binding }" HasUnevenRows="True" RowHeight="-1" Margin="10,10,10,10" x:Name="Lsv_Huyen" ItemSelected="Lsv_Huyen_ItemSelected" >
+            <ListView.ItemTemplate >
+                <DataTemplate >
+                    <TextCell Text="{Binding TenHuyen}"></TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
