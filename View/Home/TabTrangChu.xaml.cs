@@ -33,6 +33,7 @@ public partial class TabTrangChu : ContentPage
 
         NavigationPage.SetHasNavigationBar(this, false);
         Shell.SetNavBarIsVisible(this, false);
+        Scr_Noidung.IsVisible = true;
         AcI_load.IsVisible = false;
         AcI_load.IsRunning = false;
     }
@@ -50,26 +51,19 @@ public partial class TabTrangChu : ContentPage
  
 
 
-    private void Btn_DatKhamBacSi_Clicked(object sender, EventArgs e)
+    private async void Btn_DatKhamBacSi_Clicked(object sender, EventArgs e)
     {
+        popup.Dismiss();
+        Scr_Noidung.IsVisible=false;
         AcI_load.IsVisible = true;
         AcI_load.IsRunning = true;
-        Navigation.PushAsync(new DatKhamBacSi());
+        await Navigation.PushAsync(new DatKhamBacSi());
     }
 
     private async void Btn_XemThem_Clicked(object sender, EventArgs e)
     {
-        /*        BacSi result = (BacSi) await this.ShowPopupAsync(new PopUpPage());
-                if (result != null)
-                {
-                    if (result.TenBS == "True")
-                    {
-                        AcI_load.IsVisible = true;
-                        AcI_load.IsRunning = true;
-                        await Navigation.PushAsync(new DatKhamBacSi());
-                    }
-                }*/
-        AcI_load.IsVisible = true;
+        popup.Show();
+/*        AcI_load.IsVisible = true;
         AcI_load.IsRunning = true;
         MopupsChucNang popup = new MopupsChucNang();
         await MopupService.Instance.PushAsync(popup);
@@ -81,21 +75,19 @@ public partial class TabTrangChu : ContentPage
             }
         }
         AcI_load.IsVisible = false;
-        AcI_load.IsRunning = false;
+        AcI_load.IsRunning = false;*/
     }
 
-    private async void Btn_YTeTaiNha_Clicked(object sender, EventArgs e)
+    private  void Btn_YTeTaiNha_Clicked(object sender, EventArgs e)
     {
 
-        ShowSheetBottom sheet = new ShowSheetBottom();
-        await sheet.ShowAsync();
     }
 
-    private async void Btn_TraCuuKetQuaKhamBenh_Clicked(object sender, EventArgs e)
+    private  void Btn_TraCuuKetQuaKhamBenh_Clicked(object sender, EventArgs e)
     {
-        AcI_load.IsVisible = true;
+/*        AcI_load.IsVisible = true;
         AcI_load.IsRunning = true;
-        BacSi result = (BacSi)await this.ShowPopupAsync(new PopUpPage());
+        BacSi result = (BacSi)await this.ShowPopupAsync();
         if (result != null)
         {
             if (result.TenBS == "True")
@@ -105,7 +97,12 @@ public partial class TabTrangChu : ContentPage
             }
         }
         AcI_load.IsVisible = false;
-        AcI_load.IsRunning = false;
+        AcI_load.IsRunning = false;*/
+    }
+
+    private void PopUp_Btn_Thoat_Clicked(object sender, EventArgs e)
+    {
+        popup.Dismiss();
     }
     /*    public static  void PopRootNavigationPage()
 {

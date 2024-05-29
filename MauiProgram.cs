@@ -2,6 +2,7 @@
 using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using Mopups.Hosting;
+using Syncfusion.Maui.Core.Hosting;
 using The49.Maui.BottomSheet;
 
 namespace BVND115
@@ -17,6 +18,7 @@ namespace BVND115
                 .UseMauiApp<App>()
                 .UseMauiCameraView()
                 .UseMauiCommunityToolkit()
+                .ConfigureSyncfusionCore()
                 .UseBottomSheet()
                 .ConfigureMopups()
                 .ConfigureFonts(fonts =>
@@ -25,9 +27,10 @@ namespace BVND115
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 })
                 ;
+            builder.ConfigureSyncfusionCore();
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

@@ -38,7 +38,7 @@ public partial class TabHoSo : ContentPage
     public  void LoadHoSoKhamBenh()
     {
         lstHoSoKhamBenh = new List<HoSoKhamBenh> ();
-        for(int i=0; i<5; i++)
+        for(int i=0; i<10; i++)
         {
             HoSoKhamBenh hoSoKhamBenh= new HoSoKhamBenh();
             hoSoKhamBenh.MaHS = i.ToString();

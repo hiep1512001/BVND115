@@ -112,7 +112,7 @@ Microsoft.Maui.Handlers.SearchBarHandler.Mapper.AppendToMapping("FullWidth", (ha
     private void Btn_TatCa_Clicked(object sender, EventArgs e)
     {
         Btn_TatCa.TextColor=Colors.White;
-        Btn_TatCa.BackgroundColor = Color.FromHex("#512BD4");
+        Btn_TatCa.BackgroundColor = Color.FromHex("#28C2D1");
 
         Btn_BHYT.TextColor = Colors.Black;
         Btn_BHYT.BackgroundColor = Color.FromHex("#dcded9");
@@ -135,7 +135,7 @@ Microsoft.Maui.Handlers.SearchBarHandler.Mapper.AppendToMapping("FullWidth", (ha
         lstBacsi = await restService.RefreshDataAsync(lstBacsi);
         string kiemtraconten = restService.kiemtra;*/
         Btn_KhamVip.TextColor = Colors.White;
-        Btn_KhamVip.BackgroundColor = Color.FromHex("#512BD4");
+        Btn_KhamVip.BackgroundColor = Color.FromHex("#28C2D1");
 
         Btn_TatCa.TextColor = Colors.Black;
         Btn_TatCa.BackgroundColor = Color.FromHex("#dcded9");
@@ -153,7 +153,7 @@ Microsoft.Maui.Handlers.SearchBarHandler.Mapper.AppendToMapping("FullWidth", (ha
     private void Btn_KhamYeuCau_Clicked(object sender, EventArgs e)
     {
         Btn_KhamYeuCau.TextColor = Colors.White;
-        Btn_KhamYeuCau.BackgroundColor = Color.FromHex("#512BD4");
+        Btn_KhamYeuCau.BackgroundColor = Color.FromHex("#28C2D1");
 
         Btn_KhamVip.TextColor = Colors.Black;
         Btn_KhamVip.BackgroundColor = Color.FromHex("#dcded9");
@@ -172,7 +172,7 @@ Microsoft.Maui.Handlers.SearchBarHandler.Mapper.AppendToMapping("FullWidth", (ha
     {
        
         Btn_BHYT.TextColor = Colors.White;
-        Btn_BHYT.BackgroundColor = Color.FromHex("#512BD4");
+        Btn_BHYT.BackgroundColor = Color.FromHex("#28C2D1");
 
         Btn_KhamYeuCau.TextColor = Colors.Black;
         Btn_KhamYeuCau.BackgroundColor = Color.FromHex("#dcded9");

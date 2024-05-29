@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BVND115.View.TrangChu.DatKhamBacSi"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
              Title="DANH SÁCH BÁC SĨ ĐẶT KHÁM">
     <StackLayout Orientation="Vertical">
         <Grid BackgroundColor="{StaticResource Cyan100Accent}">
@@ -38,47 +39,45 @@
                 <Button Text="Khám BHYT" BackgroundColor="#dcded9" TextColor="Black" Margin="10,0,0,0" CornerRadius="20" x:Name="Btn_BHYT" Clicked="Btn_BHYT_Clicked"/>
             </StackLayout>
         </ScrollView>
-        <ListView ItemsSource="{Binding }" HasUnevenRows="True" RowHeight="-1" Margin="10,0,10,10" x:Name="Lsv_BacSi" ItemSelected="Lsv_BacSi_ItemSelected" >
-            <ListView.ItemTemplate >
+        <syncfusion:SfListView ItemsSource="{Binding }"  Margin="10,0,10,10" x:Name="Lsv_BacSi" AutoFitMode="Height" SelectionMode="SingleDeselect"  ScrollBarVisibility="Never" VerticalOptions="StartAndExpand">
+            <syncfusion:SfListView.ItemTemplate >
                 <DataTemplate >
-                    <ViewCell>
-                        <Border Padding="20,20,20,20" Margin="0,20,0,0">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                </Grid.RowDefinitions>
-                                <Image Grid.Row="0" Grid.Column="0" Source="icon_lvbacsi_bac_si.png" HeightRequest="18" WidthRequest="20"/>
-                                <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Margin="20,0,0,0" Text="{Binding TenBS}" TextColor="{StaticResource Cyan100Accent}" FontSize="18" FontAttributes="Bold" TextTransform="Uppercase" FontFamily="Lobster-Regular"></Label>
+                    <Border Padding="13,13,13,13" Margin="0,10,0,0" Stroke="{StaticResource Gray100}" StrokeThickness="2">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Image Grid.Row="0" Grid.Column="0" Source="icon_lvbacsi_bac_si.png" HeightRequest="18" WidthRequest="20"/>
+                            <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Margin="20,0,0,0" Text="{Binding TenBS}" TextColor="{StaticResource Cyan100Accent}" FontSize="18" FontAttributes="Bold" TextTransform="Uppercase" FontFamily="Lobster-Regular"></Label>
 
-                                <Image Margin="0,4,0,0" Grid.Row="1" Grid.Column="0"  Source="icon_lvbacsi_gioi_tinh.png" HeightRequest="16" WidthRequest="16"/>
-                                <Label Grid.Row="1" Grid.Column="1" Margin="20,4,0,0"  Text="Giới tính: "></Label>
-                                <Label Margin="0,4,0,0" Grid.Row="1" Grid.Column="2" Text="{Binding GioiTinh}"></Label>
+                            <Image Margin="0,4,0,0" Grid.Row="1" Grid.Column="0"  Source="icon_lvbacsi_gioi_tinh.png" HeightRequest="16" WidthRequest="16"/>
+                            <Label Grid.Row="1" Grid.Column="1" Margin="20,4,0,0"  Text="Giới tính: "></Label>
+                            <Label Margin="0,4,0,0" Grid.Row="1" Grid.Column="2" Text="{Binding GioiTinh}"></Label>
 
-                                <Image VerticalOptions="Start" Margin="0,4,0,0"  Grid.Row="2" Grid.Column="0" Source="icon_lvbacsi_chuyen_khoa.png" HeightRequest="16" WidthRequest="16"/>
-                                <Label Grid.Row="2" Grid.Column="1" Margin="20,4,0,0"  Text="Chuyên khoa: "></Label>
-                                <Label Margin="0,4,0,0"  Grid.Row="2" Grid.Column="2" Text="{Binding ChuyenKhoa}"  FontAttributes="Bold" LineBreakMode="WordWrap"></Label>
+                            <Image VerticalOptions="Start" Margin="0,4,0,0"  Grid.Row="2" Grid.Column="0" Source="icon_lvbacsi_chuyen_khoa.png" HeightRequest="16" WidthRequest="16"/>
+                            <Label Grid.Row="2" Grid.Column="1" Margin="20,4,0,0"  Text="Chuyên khoa: "></Label>
+                            <Label Margin="0,4,0,0"  Grid.Row="2" Grid.Column="2" Text="{Binding ChuyenKhoa}"  FontAttributes="Bold" LineBreakMode="WordWrap"></Label>
 
-                                <Image Margin="0,4,0,0"  Grid.Row="3" Grid.Column="0" Source="icon_lvbacsi_lich_kham.png" HeightRequest="16" WidthRequest="16"/>
-                                <Label Grid.Row="3" Grid.Column="1" Margin="20,4,0,0"  Text="Lịch khám: "></Label>
-                                <Label Margin="0,4,0,0"  Grid.Row="3" Grid.Column="2" Text="{Binding LichKham}"></Label>
+                            <Image Margin="0,4,0,0"  Grid.Row="3" Grid.Column="0" Source="icon_lvbacsi_lich_kham.png" HeightRequest="16" WidthRequest="16"/>
+                            <Label Grid.Row="3" Grid.Column="1" Margin="20,4,0,0"  Text="Lịch khám: "></Label>
+                            <Label Margin="0,4,0,0"  Grid.Row="3" Grid.Column="2" Text="{Binding LichKham}"></Label>
 
-                                <Image Margin="0,4,0,0"  Grid.Row="4" Grid.Column="0" Source="icon_lvbacsi_gia_kham.png" HeightRequest="16" WidthRequest="16"/>
-                                <Label Grid.Row="4" Grid.Column="1" Margin="20,4,0,0"  Text="Giá khám: "></Label>
-                                <Label Margin="0,4,0,0"  Grid.Row="4" Grid.Column="2" Text="{Binding GiaKham}"></Label>
-                            </Grid>
-                        </Border>
-                    </ViewCell>
+                            <Image Margin="0,4,0,0"  Grid.Row="4" Grid.Column="0" Source="icon_lvbacsi_gia_kham.png" HeightRequest="16" WidthRequest="16"/>
+                            <Label Grid.Row="4" Grid.Column="1" Margin="20,4,0,0"  Text="Giá khám: "></Label>
+                            <Label Margin="0,4,0,0"  Grid.Row="4" Grid.Column="2" Text="{Binding GiaKham}"></Label>
+                        </Grid>
+                    </Border>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </syncfusion:SfListView.ItemTemplate>
+        </syncfusion:SfListView>
     </StackLayout>
 </ContentPage>
