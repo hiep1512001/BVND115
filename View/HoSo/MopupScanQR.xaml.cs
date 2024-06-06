@@ -2,14 +2,18 @@
 using Camera.MAUI;
 using CommunityToolkit.Maui.Alerts;
 using Mopups.Services;
+using System.Threading.Tasks;
 
 namespace BVND115.View.HoSo;
 
-public partial class ScanQRCodePage : ContentPage
+public partial class MopupScanQR 
 {
-	public ScanQRCodePage()
+    TaskCompletionSource<string> _taskCompletionSource;
+    public Task<string> PopupDismissedTask => _taskCompletionSource.Task;
+    public string ReturnValue;
+    public MopupScanQR()
 	{
-        InitializeComponent();
+		InitializeComponent();
         cameraView.BarCodeDecoder = new ZXingBarcodeDecoder();
         cameraView.BarCodeOptions = new BarcodeDecodeOptions
         {
@@ -27,11 +31,9 @@ public partial class ScanQRCodePage : ContentPage
         string result;
         MainThread.BeginInvokeOnMainThread(async () =>
         {
-/*            result = $"{args.Result[0].Text}";*/
             result = args.Result[0].Text.ToString();
-/*            ThemHoSo.qrcodeResult = result;*/
-            await Navigation.PopAsync();
-
+            ReturnValue = result;
+            await MopupService.Instance.PopAsync();
 
         });
     }
@@ -57,6 +59,7 @@ public partial class ScanQRCodePage : ContentPage
     {
         base.OnAppearing();
 
+        _taskCompletionSource = new TaskCompletionSource<string>();
         NavigationPage.SetHasNavigationBar(this, false);
         Shell.SetNavBarIsVisible(this, false);
 
@@ -95,6 +98,6 @@ public partial class ScanQRCodePage : ContentPage
     {
         base.OnDisappearing();
         await Navigation.PopToRootAsync();
-
+        _taskCompletionSource.SetResult(ReturnValue);
     }
 }

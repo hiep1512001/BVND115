@@ -1,10 +1,13 @@
 ﻿
 using BVND115.Model;
-
 namespace BVND115.View.HoSo;
 
 public partial class ListTinh : ContentPage
 {
+    TaskCompletionSource<Tinh> _taskCompletionSource;
+    public Task<Tinh> PopupDismissedTask => _taskCompletionSource.Task;
+    private Tinh ReturnValue;
+    private int ktra = 0;
     public List<Tinh> LstTinh = new List<Tinh>();
 	public ListTinh()
 	{
@@ -24,7 +27,7 @@ Microsoft.Maui.Handlers.SearchBarHandler.Mapper.AppendToMapping("FullWidth", (ha
     protected override void OnAppearing()
     {
         base.OnAppearing();
-
+        _taskCompletionSource = new TaskCompletionSource<Tinh>();
         NavigationPage.SetHasNavigationBar(this, false);
         Shell.SetNavBarIsVisible(this, false);
     }
@@ -33,12 +36,6 @@ Microsoft.Maui.Handlers.SearchBarHandler.Mapper.AppendToMapping("FullWidth", (ha
         Navigation.PopAsync();
     }
 
-    private async void Lsv_Tinh_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-    {
-        ThemHoSo.tinh = new Tinh();
-        ThemHoSo.tinh = e.SelectedItem as Tinh;
-        await Navigation.PopAsync();
-    }
     public void LoadTinh()
     {
         LstTinh.Clear();
@@ -69,8 +66,20 @@ Microsoft.Maui.Handlers.SearchBarHandler.Mapper.AppendToMapping("FullWidth", (ha
     }
     protected override async void OnDisappearing()
     {
+        if (ktra == 0)
+        {
+            base.OnDisappearing();
+            await Navigation.PopToRootAsync();
+        }
         base.OnDisappearing();
-        await Navigation.PopToRootAsync();
+        _taskCompletionSource.SetResult(ReturnValue);
+    }
+
+    private async void Lsv_Tinh_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
+    {
+        ReturnValue = new Tinh();
+        ReturnValue = e.DataItem as Tinh;
+        await Navigation.PopAsync();
 
     }
 }

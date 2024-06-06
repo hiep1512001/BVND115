@@ -9,7 +9,7 @@ namespace BVND115.Model
     public class PropertyCollectionViewNgay
     {
         public string Text {  get; set; }
-        public string Color { get; set; }
+        public Color Color { get; set; }
         public string Isvisible { get; set; }   
     }
 }

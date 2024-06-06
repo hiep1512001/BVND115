@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BVND115.View.TrangChu.ChonGioKham"
+             xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+             Title="ChonGioKham">
+    <StackLayout Orientation="Vertical">
+        <Grid BackgroundColor="{StaticResource Cyan100Accent}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+        <ImageButton Grid.Column="0" Margin="3,0,0,0" Source="icon_go_back.png" HeightRequest="35" WidthRequest="35" x:Name="Imb_GoBack" Clicked="Imb_GoBack_Clicked" Background="{StaticResource Cyan100Accent}">
+            <ImageButton.Triggers>
+                <Trigger TargetType="ImageButton"
+                                            Property="IsPressed"
+                                            Value="True">
+                    <Setter Property="Scale" Value=".8" />
+                </Trigger>
+                <Trigger TargetType="ImageButton"
+                                              Property="IsPressed"
+                                              Value="False">
+                    <Setter Property="Scale" Value="1" />
+                </Trigger>
+            </ImageButton.Triggers>
+        </ImageButton>
+            <Label VerticalTextAlignment="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1" TextColor="White" Text="VUI LÒNG CHỌN GIỜ KHÁM" FontSize="18" FontAttributes="Bold" FontFamily="Lobster-Regular"></Label>
+        </Grid>
+        <Label Text="Buổi sáng" FontSize="18" FontAttributes="Bold" Margin="10,10,0,0" ></Label>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <buttons:SfButton Margin="10,10,5,0" Grid.Row="0" Grid.Column="0" CornerRadius="5"  Text="07:00 - 08:00" TextColor="Black" Background="White" Stroke="{StaticResource Cyan100Accent}" StrokeThickness="1.5" x:Name="Btn_Gioi7" Clicked="Btn_Gioi7_Clicked" />
+            <buttons:SfButton Margin="5,10,5,0" Grid.Row="0" Grid.Column="1" CornerRadius="5"  Text="08:00 - 09:00" TextColor="Black"  Background="White" Stroke="{StaticResource Cyan100Accent}" StrokeThickness="1.5" x:Name="Btn_Gioi8" Clicked="Btn_Gioi8_Clicked"/>
+            <buttons:SfButton Margin="5,10,10,0" Grid.Row="0" Grid.Column="2" CornerRadius="5"  Text="09:00 - 10:00" TextColor="Black"  Background="White" Stroke="{StaticResource Cyan100Accent}" StrokeThickness="1.5" x:Name="Btn_Gioi9" Clicked="Btn_Gioi9_Clicked"/>
+            <buttons:SfButton Margin="10,10,5,0" Grid.Row="1" Grid.Column="0" CornerRadius="5"  Text="10:00 - 11:00" TextColor="Black"  Background="White" Stroke="{StaticResource Cyan100Accent}" StrokeThickness="1.5" x:Name="Btn_Gioi10" Clicked="Btn_Gioi10_Clicked"/>
+            <buttons:SfButton Margin="5,10,0,0" Grid.Row="2" Grid.Column="1" CornerRadius="5"  Text="11:00 - 12:00" TextColor="Black"  Background="White" Stroke="{StaticResource Cyan100Accent}" StrokeThickness="1.5" x:Name="Btn_Gioi11" Clicked="Btn_Gioi11_Clicked"/>
+        </Grid>
+        <Label Text="Buổi chiều"  FontSize="18" FontAttributes="Bold" Margin="10,10,0,0"></Label>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <buttons:SfButton Margin="10,10,5,0" Grid.Row="0" Grid.Column="0" CornerRadius="5"  Text="13:00 - 14:00" TextColor="Black"  Background="White" Stroke="{StaticResource Cyan100Accent}" StrokeThickness="1.5" x:Name="Btn_Gioi13" Clicked="Btn_Gioi13_Clicked"/>
+            <buttons:SfButton Margin="5,10,5,0" Grid.Row="0" Grid.Column="1" CornerRadius="5"  Text="14:00 - 15:00" TextColor="Black"   Background="White" Stroke="{StaticResource Cyan100Accent}" StrokeThickness="1.5" x:Name="Btn_Gioi14" Clicked="Btn_Gioi14_Clicked"/>
+            <buttons:SfButton Margin="5,10,10,0" Grid.Row="0" Grid.Column="2" CornerRadius="5"  Text="15:00 - 16:00" TextColor="Black" Background="White" Stroke="{StaticResource Cyan100Accent}" StrokeThickness="1.5" x:Name="Btn_Gioi15" Clicked="Btn_Gioi15_Clicked"/>
+        </Grid>
+    </StackLayout>
+
+</ContentPage>

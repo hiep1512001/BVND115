@@ -6,7 +6,11 @@ using BVND115.Model;
 using BVND115.View.Home;
 using Camera.MAUI;
 using Camera.MAUI.ZXing;
+using CommunityToolkit.Maui.Views;
 using Microsoft.Maui.Controls.PlatformConfiguration;
+using Mopups.Pages;
+using Mopups.Services;
+using System.Collections.Generic;
 using System.Globalization;
 
 namespace BVND115.View.HoSo;
@@ -17,10 +21,10 @@ public partial class ThemHoSo : ContentPage
     AppCompatEditText nativeEditText;
 #endif*/
     private int Ktra=0;
-    public static string qrcodeResult="";
-    public static Xa xa=null;
-    public static Huyen huyen = null;
-    public static Tinh tinh = null;
+    public  string qrcodeResult="";
+    public  Xa xa=null;
+    public  Huyen huyen = null;
+    public  Tinh tinh = null;
     private List<NgheNghiep> lstNgheNghiep ;
 
     private Boolean ngay=false;
@@ -28,22 +32,16 @@ public partial class ThemHoSo : ContentPage
     public ThemHoSo()
 	{
 		InitializeComponent();
+
+
     }
-/*    void GetCursorPosition()
-    {
-        Microsoft.Maui.Handlers.EditorHandler.Mapper.AppendToMapping("MyCustomization", (handler, view) =>
-        {
-#if ANDROID
-            nativeEditText = handler.PlatformView;
-#endif
-        });
-    }*/
-    private void ScanQRCode(object sender, EventArgs e)
+    private async void ScanQRCode(object sender, EventArgs e)
     {
         Ktra = 1;
-        AcI_load.IsVisible = true;
-        AcI_load.IsRunning = true;
-        Navigation.PushAsync(new ScanQRCodePage());
+        var popup = new MopupScanQR();
+        await MopupService.Instance.PushAsync(popup);
+        qrcodeResult = await popup.PopupDismissedTask;
+        LoadValueScan();
     }
     public void LoadValueScan()
     {
@@ -60,6 +58,7 @@ public partial class ThemHoSo : ContentPage
                 string DiaChi = words[5];
                 Etr_CCCD.Text = CCCD;
                 Etr_Ten.Text = Ten;
+                Etr_NgaySinh.TextColor = Colors.Black;
                 Etr_NgaySinh.Text = XuLyNgaySinh(NgaySinh) + "/" + XuLyThangSinh(NgaySinh) + "/" + XuLyNamSinh(NgaySinh);
                 XuLyGioiTinh(GioiTinh);
                 Etr_QuocGia.Text = "Việt Nam";
@@ -77,24 +76,6 @@ public partial class ThemHoSo : ContentPage
             }
         }
     }
-    public void LoadTinhHuyenXaSelect()
-    {
-        if (xa != null)
-        {
-            Etr_xa.TextColor= Colors.Black;
-            Etr_xa.Text = xa.TenXa;
-        }
-        if(huyen!=null)
-        {
-            Etr_Huyen.TextColor=Colors.Black;
-            Etr_Huyen.Text = huyen.TenHuyen;
-        }
-        if (tinh != null)
-        {
-            Etr_Tinh.TextColor = Colors.Black;
-            Etr_Tinh.Text= tinh.TenTinh;
-        }
-    }
     protected override void OnAppearing()
     {
         base.OnAppearing();
@@ -103,8 +84,6 @@ public partial class ThemHoSo : ContentPage
         Shell.SetNavBarIsVisible(this, false);
         AcI_load.IsVisible = false;
         AcI_load.IsRunning = false;
-        LoadValueScan();
-        LoadTinhHuyenXaSelect();
     }
     private void Btn_ThemHoSo_Clicked(object sender, EventArgs e)
     {
@@ -173,24 +152,52 @@ public partial class ThemHoSo : ContentPage
         Ktra = 1;
         AcI_load.IsVisible = true;
         AcI_load.IsRunning = true;
-        await Navigation.PushAsync(new ListTinh());
+        ListTinh listTinh = new ListTinh();
+        await Navigation.PushAsync(listTinh);
+        var rvalue = await listTinh.PopupDismissedTask;
+       
+        if (rvalue != null)
+        {
+            Etr_Tinh.TextColor = Colors.Black;
+            Etr_Tinh.Text = rvalue.TenTinh.ToString();
+        }
+       
     }
     public async void Etr_Huyen_Click(object sender, TappedEventArgs e)
     {
         Ktra = 1;
         AcI_load.IsVisible = true;
         AcI_load.IsRunning = true;
-        await Navigation.PushAsync(new ListHuyen());
+        ListHuyen listHuyen= new ListHuyen();
+        await Navigation.PushAsync(listHuyen);
+        var rvalue = await listHuyen.PopupDismissedTask;
+        
+        if (rvalue != null)
+        {
+            Etr_Huyen.TextColor = Colors.Black;
+            Etr_Huyen.Text = rvalue.TenHuyen.ToString();
+        }
+       
+
     }
     public async void Etr_Xa_Click(object sender, TappedEventArgs e)
     {
         Ktra = 1;
         AcI_load.IsVisible = true;
         AcI_load.IsRunning = true;
-        await Navigation.PushAsync(new ListXa());
+        ListXa listxa= new ListXa();
+        await Navigation.PushAsync(listxa);
+        var rvalue = await listxa.PopupDismissedTask;
+        
+        if (rvalue != null)
+        {
+            Etr_xa.TextColor = Colors.Black;
+            Etr_xa.Text = rvalue.TenXa.ToString();
+        }
+            
     }
 
-    private void Etr_NgaySinh_TextChanged(object sender, TextChangedEventArgs e)
+/*    private void Etr_NgaySinh_TextChanged(object sender, TextChangedEventArgs e)
     {
         if (Etr_NgaySinh.Text != null ) { 
             if(Etr_NgaySinh.Text.Length ==  2 && ngay == false)
@@ -198,7 +205,7 @@ public partial class ThemHoSo : ContentPage
                 Etr_NgaySinh.Text = Etr_NgaySinh.Text + "/";
                 Etr_NgaySinh.CursorPosition = Etr_NgaySinh.Text.Length;
                 ngay = true;
-/*                var looper = Looper.MyLooper();
+*//*                var looper = Looper.MyLooper();
                 if (looper != null)
                 {
                     var handler = new Handler(looper);
@@ -214,14 +221,14 @@ public partial class ThemHoSo : ContentPage
                     Etr_NgaySinh.Text = Etr_NgaySinh.Text + "/";
                     Etr_NgaySinh.CursorPosition = Etr_NgaySinh.Text.Length;
                     ngay = true;
-                }*/
+                }*//*
             }
             if (Etr_NgaySinh.Text.Length == 5 && thang == false)
             {
                 Etr_NgaySinh.Text = Etr_NgaySinh.Text + "/";
                 Etr_NgaySinh.CursorPosition = Etr_NgaySinh.Text.Length;
                 thang = true;
-/*                var looper = Looper.MyLooper();
+*//*                var looper = Looper.MyLooper();
                 if (looper != null)
                 {
                     var handler = new Handler(looper);
@@ -238,7 +245,7 @@ public partial class ThemHoSo : ContentPage
                     Etr_NgaySinh.CursorPosition = Etr_NgaySinh.Text.Length;
                     thang = true;
                 }
-*/
+*//*
 
             }
             if (Etr_NgaySinh.Text.Length < 2)
@@ -250,7 +257,7 @@ public partial class ThemHoSo : ContentPage
                 thang=false;
             }
         }
-    }
+    }*/
     protected override async void OnDisappearing()
     {
         base.OnDisappearing();
@@ -259,5 +266,36 @@ public partial class ThemHoSo : ContentPage
             await Navigation.PopToRootAsync();
         }
 
+    }
+
+    private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    {
+        datepicker.IsOpen = true;
+    }
+
+    private void datepicker_OkButtonClicked(object sender, EventArgs e)
+    {
+        AcI_load.IsVisible = true;
+        AcI_load.IsRunning = true;
+        Etr_NgaySinh.TextColor=Colors.Black;
+        Etr_NgaySinh.Text= datepicker.SelectedDate.ToString("dd/MM/yyyy");
+        datepicker.IsOpen = false;
+    }
+
+    private void datepicker_CancelButtonClicked(object sender, EventArgs e)
+    {
+        datepicker.IsOpen = false;
+    }
+
+    private void datepicker_Opened(object sender, EventArgs e)
+    {
+        AcI_load.IsVisible = false;
+        AcI_load.IsRunning = false;
+    }
+
+    private void datepicker_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+    {
+        AcI_load.IsVisible = false;
+        AcI_load.IsRunning = false;
     }
 }

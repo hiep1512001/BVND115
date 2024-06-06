@@ -40,7 +40,7 @@ namespace BVND115.Service
                     /*                    Items = JsonConvert.DeserializeObject<List<BacSi>>(content);*/
                 }
             }
-            catch (Exception ex)
+            catch
             {
             }
 

@@ -2,6 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BVND115.View.HoSo.ThemHoSo"
+             xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
+             xmlns:sfPopup="clr-namespace:Syncfusion.Maui.Popup;assembly=Syncfusion.Maui.Popup"
+             xmlns:picker="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
              Title="THÔNG TIN" >
     <StackLayout Orientation="Vertical">
         <Grid BackgroundColor="{StaticResource Cyan100Accent}">
@@ -62,8 +66,38 @@
                     <Label Text="*" TextColor="Red" Margin="0,10,10,0" FontSize="16"></Label>
                 </StackLayout>
                 <Border Margin="10,0,10,0" StrokeShape="RoundRectangle 20,20,20,20" StrokeThickness="2" Padding="5,0,0,0">
-                    <Entry Placeholder="Ngày / Tháng / Năm" FontSize="16" x:Name="Etr_NgaySinh" TextChanged="Etr_NgaySinh_TextChanged" Keyboard="Numeric" MaxLength="10" ></Entry>
+                    <Label Grid.Column="0" Margin="0,0,0,0" Text="Ngày / Tháng / Năm" VerticalTextAlignment="Center" x:Name="Etr_NgaySinh" FontSize="16" HeightRequest="45" TextColor="{StaticResource Gray200}" >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
                 </Border>
+                <picker:SfDatePicker x:Name="datepicker" Opened="datepicker_Opened" Closing="datepicker_Closing"
+                         Mode="Dialog" ColumnDividerColor="Black" OkButtonClicked="datepicker_OkButtonClicked" CancelButtonClicked="datepicker_CancelButtonClicked">
+                    <picker:SfDatePicker.HeaderView  >
+                        <picker:PickerHeaderView Height="40" Text="CHỌN NGÀY SINH" Background="{StaticResource Cyan100Accent}" DividerColor="Black">
+                            <picker:PickerHeaderView.TextStyle >
+                                <picker:PickerTextStyle FontSize="15" TextColor="White" />
+                            </picker:PickerHeaderView.TextStyle>
+                        </picker:PickerHeaderView>
+                    </picker:SfDatePicker.HeaderView>
+                    <picker:SfDatePicker.ColumnHeaderView >
+                        <picker:DatePickerColumnHeaderView DayHeaderText="Ngày" DividerColor="Black"
+                                           MonthHeaderText="Tháng"
+                                           YearHeaderText="Năm"/>
+                    </picker:SfDatePicker.ColumnHeaderView>
+                    <picker:SfDatePicker.FooterView  >
+                        <picker:PickerFooterView Height="40" OkButtonText="Chọn" DividerColor="Black"
+                                 CancelButtonText="Đóng" Background="{StaticResource Cyan100Accent}">
+                            <picker:PickerFooterView.TextStyle >
+                                <picker:PickerTextStyle FontSize="15" TextColor="White" />
+                            </picker:PickerFooterView.TextStyle>
+                        </picker:PickerFooterView>
+                    </picker:SfDatePicker.FooterView>
+                    <picker:SfDatePicker.SelectionView >
+                        <picker:PickerSelectionView  Background="{StaticResource Cyan100Accent}" />
+                    </picker:SfDatePicker.SelectionView>
+                </picker:SfDatePicker>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Giới tính" Margin="10,10,5,0" FontSize="16" ></Label>
                     <Label Text="*" TextColor="Red" Margin="0,10,10,0" FontSize="16"></Label>
@@ -85,7 +119,7 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition Width="60"/>
                             </Grid.ColumnDefinitions>
-                            <RadioButton Margin="10,0,0,0" Content="Nam" x:Name="Rdb_Nam" Grid.Column="0" IsChecked="True"  GroupName="gioitinh" />
+                            <RadioButton Margin="10,0,0,0" Content="Nam" x:Name="Rdb_Nam" Grid.Column="0" IsChecked="True"  GroupName="gioitinh"/>
                             <Image Source="icon_thongtinhoso_gioitinh_nam.png" Grid.Column="1" WidthRequest="30" HeightRequest="30"/>
                         </Grid>
                     </Border>
@@ -105,6 +139,8 @@
                         </Grid>
                     </Border>
                 </Grid>
+                <syncfusion:SfRadioButton x:Name="radioButton" Text="Nam"/>
+                
                 <Label Text="Mã bảo hiểm y tế" Margin="10,10,10,0" FontSize="16" ></Label>
                 <Border Margin="10,0,10,0" StrokeShape="RoundRectangle 20,20,20,20" StrokeThickness="2" Padding="5,0,0,0">
                     <Entry Placeholder="Mã bảo hiểm y tế" FontSize="16"></Entry>
@@ -249,7 +285,5 @@
                 <Button Text="TẠO MỚI HỒ SƠ" FontSize="16" Margin="10,20,10,10" BackgroundColor="{StaticResource Cyan100Accent}" CornerRadius="30" x:Name="Btn_ThemHoSo" Clicked="Btn_ThemHoSo_Clicked"></Button>
             </StackLayout>
         </ScrollView>
-        
     </StackLayout>
-
 </ContentPage>

@@ -1,5 +1,8 @@
 ﻿using BVND115.Model;
 using BVND115.Service;
+using BVND115.ViewModel;
+using Syncfusion.Maui.Core;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
 namespace BVND115.View.TrangChu;
@@ -79,7 +82,12 @@ Microsoft.Maui.Handlers.SearchBarHandler.Mapper.AppendToMapping("FullWidth", (ha
             lstBacSi.AddRange(lstBacSi_VIP);
             lstBacSi.AddRange(lstBacSi_KYC);
             lstBacSi.AddRange(lstBacSi_BHYT);
-            BindingContext = lstBacSi.ToList();
+/*        DatKhamBacSiViewModel datKhamBacSiViewModel = new DatKhamBacSiViewModel()
+        {
+            BacSis = new ObservableCollection<BacSi>(lstBacSi)
+        };
+        BindingContext = datKhamBacSiViewModel;*/
+        BindingContext = lstBacSi;
     }
 
     private async void Lsv_BacSi_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -99,6 +107,7 @@ Microsoft.Maui.Handlers.SearchBarHandler.Mapper.AppendToMapping("FullWidth", (ha
         base.OnAppearing();
         NavigationPage.SetHasNavigationBar(this, false);
         Shell.SetNavBarIsVisible(this, false);
+        Lsv_BacSi.SelectedItems.Clear();
         ktra = 0;
         AcI_load.IsVisible = false;
         AcI_load.IsRunning = false;
@@ -124,6 +133,12 @@ Microsoft.Maui.Handlers.SearchBarHandler.Mapper.AppendToMapping("FullWidth", (ha
         Btn_KhamVip.BackgroundColor = Color.FromHex("#dcded9");
 
         TrangThai = TrangThaiTatCa;
+
+/*        DatKhamBacSiViewModel datKhamBacSiViewModel = new DatKhamBacSiViewModel()
+        {
+            BacSis = new ObservableCollection<BacSi>(lstBacSi)
+        };
+        BindingContext = datKhamBacSiViewModel;*/
         BindingContext = lstBacSi;
     }
 
@@ -146,8 +161,13 @@ Microsoft.Maui.Handlers.SearchBarHandler.Mapper.AppendToMapping("FullWidth", (ha
         Btn_BHYT.TextColor = Colors.Black;
         Btn_BHYT.BackgroundColor = Color.FromHex("#dcded9");
             TrangThai = TrangThaiVip;
-/*           await App.Current.MainPage.DisplayAlert("Thông báo", kiemtraconten.ToString() + "" +lstBacsi.Count().ToString(), "PK");*/
-            BindingContext = lstBacSi_VIP;
+        /*           await App.Current.MainPage.DisplayAlert("Thông báo", kiemtraconten.ToString() + "" +lstBacsi.Count().ToString(), "PK");*/
+/*        DatKhamBacSiViewModel datKhamBacSiViewModel = new DatKhamBacSiViewModel()
+        {
+            BacSis = new ObservableCollection<BacSi>(lstBacSi_VIP)
+        };
+        BindingContext = datKhamBacSiViewModel;*/
+        BindingContext = lstBacSi_VIP;
     }
 
     private void Btn_KhamYeuCau_Clicked(object sender, EventArgs e)
@@ -165,6 +185,11 @@ Microsoft.Maui.Handlers.SearchBarHandler.Mapper.AppendToMapping("FullWidth", (ha
         Btn_BHYT.BackgroundColor = Color.FromHex("#dcded9");
 
         TrangThai = TrangThaiKYC;
+/*        DatKhamBacSiViewModel datKhamBacSiViewModel = new DatKhamBacSiViewModel()
+        {
+            BacSis = new ObservableCollection<BacSi>(lstBacSi_KYC)
+        };
+        BindingContext = datKhamBacSiViewModel;*/
         BindingContext = lstBacSi_KYC;
     }
 
@@ -184,7 +209,12 @@ Microsoft.Maui.Handlers.SearchBarHandler.Mapper.AppendToMapping("FullWidth", (ha
         Btn_TatCa.BackgroundColor = Color.FromHex("#dcded9");
 
         TrangThai = TrangThaiBHYT;
-        BindingContext = lstBacSi_BHYT ;
+/*                DatKhamBacSiViewModel datKhamBacSiViewModel = new DatKhamBacSiViewModel()
+        {
+                    BacSis = new ObservableCollection<BacSi>(lstBacSi_BHYT)
+                };
+        BindingContext = datKhamBacSiViewModel;*/
+        BindingContext = lstBacSi_BHYT;
     }
 
     private void Srb_Search_TextChanged(object sender, TextChangedEventArgs e)
@@ -220,4 +250,24 @@ Microsoft.Maui.Handlers.SearchBarHandler.Mapper.AppendToMapping("FullWidth", (ha
             await Navigation.PopToRootAsync();
         }
     }
+
+    private  async void Lsv_BacSi_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
+    {
+        AcI_load.IsVisible = true;
+        AcI_load.IsRunning = true;
+        BacSi bacSi= e.DataItem as BacSi;
+/*        App.Current.MainPage.DisplayAlert("Thông báo", bacSi.MaBS.ToString(), "OK");*/
+        ktra = 1;
+       await Navigation.PushAsync(new ChonNgayKham());
+    }
+
+    /*    private void SfEffectsView_AnimationCompleted(object sender, EventArgs e)
+        {
+            var effectsView = sender as SfEffectsView;
+            var selectedItem = effectsView.BindingContext as BacSi;
+
+            *//*Navigation.PushAsync(new NewPage() { BindingContext = selectedItem });*//*
+            ktra = 1;
+            Navigation.PushAsync(new ChonNgayKham());
+        }*/
 }

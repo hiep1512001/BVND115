@@ -1,9 +1,14 @@
 using BVND115.Model;
+using System.Threading.Tasks;
 
 namespace BVND115.View.HoSo;
 
 public partial class ListXa : ContentPage
 {
+    TaskCompletionSource<Xa> _taskCompletionSource;
+    public Task<Xa> PopupDismissedTask => _taskCompletionSource.Task;
+    private Xa ReturnValue;
+    private int ktra = 0;
     public List<Xa> LstXa = new List<Xa>();
     public ListXa()
 	{
@@ -37,24 +42,13 @@ Microsoft.Maui.Handlers.SearchBarHandler.Mapper.AppendToMapping("FullWidth", (ha
     protected override void OnAppearing()
     {
         base.OnAppearing();
-
+        _taskCompletionSource = new TaskCompletionSource<Xa>();
         NavigationPage.SetHasNavigationBar(this, false);
         Shell.SetNavBarIsVisible(this, false);
     }
     public void Imb_GoBack_Clicked(object sender, EventArgs e)
     {
         Navigation.PopAsync();
-    }
-    private async void Lsv_Xa_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-    {
-        /*        var route = $"{ nameof(ThemHoSo)}";*/
-        /*       await Shell.Current.GoToAsync(nameof(ThemHoSo));*/
-
-        /*        await Navigation.PopToRootAsync();*/
-
-        ThemHoSo.xa = new Xa();
-        ThemHoSo.xa = e.SelectedItem as Xa;
-        await Navigation.PopAsync();
     }
     private void Sb_TimKiem_TextChanged(object sender, TextChangedEventArgs e)
     {
@@ -74,8 +68,19 @@ Microsoft.Maui.Handlers.SearchBarHandler.Mapper.AppendToMapping("FullWidth", (ha
     }
     protected override async void OnDisappearing()
     {
+        if (ktra == 0)
+        {
+            base.OnDisappearing();
+            await Navigation.PopToRootAsync();
+        }
         base.OnDisappearing();
-        await Navigation.PopToRootAsync();
+        _taskCompletionSource.SetResult(ReturnValue);
+}
 
+    private async void Lsv_Xa_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
+    {
+        ReturnValue= new Xa();
+        ReturnValue = e.DataItem as Xa;
+         await Navigation.PopAsync();
     }
 }

@@ -10,6 +10,7 @@
             BarTextColor="Black"
             SelectedTabColor="{OnPlatform {StaticResource White}, Android={StaticResource Cyan100Accent}, WinUI= {StaticResource White}}"
             UnselectedTabColor="{OnPlatform  {StaticResource White}, Android={StaticResource Black}, WinUI= {StaticResource White}}"
+            xmlns:badge="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
             Title="HomeUserPage">
     <NavigationPage Title="Trang chủ"  IconImageSource="icon_trang_chu.png" NavigationPage.HasNavigationBar="False">
         <x:Arguments>

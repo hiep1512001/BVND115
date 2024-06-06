@@ -6,23 +6,46 @@ namespace BVND115.View.Home;
 
 public partial class TabHoSo : ContentPage
 {
+    private int ktra = 0;
+    private string TrangThaiDatKham = "datkham";
+    private string TrangThai="";
     public List<HoSoKhamBenh> lstHoSoKhamBenh;
-	public TabHoSo()
+    public TabHoSo()
+    {
+        InitializeComponent();
+        LoadHoSoKhamBenh();
+
+    }
+    public TabHoSo( string trangthai)
 	{
 		InitializeComponent();
-     
+        this.TrangThai=trangthai;       
         LoadHoSoKhamBenh();
 
     }
     protected override void OnAppearing()
     {
+        
         base.OnAppearing();
+        ktra = 0;
+        EditXml();
         AcI_load.IsVisible = false;
         AcI_load.IsRunning = false;
         NavigationPage.SetHasNavigationBar(this, false);
         Shell.SetNavBarIsVisible(this, false);
+        Lsv_HoSo.SelectedItems.Clear(); 
     }
-
+    public void EditXml()
+    {
+        if (TrangThai.Equals(TrangThaiDatKham))
+        {
+            Lbl_TieuDe.Text = "VUI LÒNG CHỌN HỒ SƠ KHÁM";
+        }
+        else
+        {
+            Lbl_TieuDe.Text = "HỒ SƠ KHÁM BỆNH";
+        }
+    }
     private  async void Lsv_HoSo_ItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
         HoSoKhamBenh hoSoKhamBenh = e.SelectedItem as HoSoKhamBenh;
@@ -38,7 +61,7 @@ public partial class TabHoSo : ContentPage
     public  void LoadHoSoKhamBenh()
     {
         lstHoSoKhamBenh = new List<HoSoKhamBenh> ();
-        for(int i=0; i<10; i++)
+        for(int i=0; i<3; i++)
         {
             HoSoKhamBenh hoSoKhamBenh= new HoSoKhamBenh();
             hoSoKhamBenh.MaHS = i.ToString();
@@ -52,20 +75,57 @@ public partial class TabHoSo : ContentPage
     }
     protected override bool OnBackButtonPressed()
     {
-        Task<bool> answer = DisplayAlert("Thông báo", "Bạn muốn thoát khỏi ứng dụng", "Có", "Không");
-        answer.ContinueWith(task =>
+        if (TrangThai.Equals(TrangThaiDatKham))
         {
-            if (task.Result)
+            Navigation.PopAsync();
+            return true;
+            
+        }
+        else
+        {
+            Task<bool> answer = DisplayAlert("Thông báo", "Bạn muốn thoát khỏi ứng dụng", "Có", "Không");
+            answer.ContinueWith(task =>
             {
-                Application.Current.Quit();
-            }
-        });
-        return true;
+                if (task.Result)
+                {
+                    Application.Current.Quit();
+                }
+            });
+            return true;
+        }
     }
     private  async void Imb_ThemHoSo_Clicked(object sender, EventArgs e)
     {
+        ktra = 1;
         AcI_load.IsVisible = true;
         AcI_load.IsRunning=true;
-        Navigation.PushAsync(new ThemHoSo());
+       await Navigation.PushAsync(new ThemHoSo());
+    }
+
+    private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    {
+        ktra = 1;
+        AcI_load.IsVisible = true;
+        AcI_load.IsRunning = true;
+        await Navigation.PushAsync(new ThemHoSo());
+    }
+
+    private async void Lsv_HoSo_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
+    {
+        ktra = 1;
+        AcI_load.IsVisible = true;
+        AcI_load.IsRunning = true;
+        await Navigation.PushAsync(new ThongTinHoSo(TrangThai));
+    }
+    protected override async void OnDisappearing()
+    {
+        if (TrangThai.Equals(TrangThaiDatKham))
+        {
+            if (ktra == 0)
+            {
+                base.OnDisappearing();
+                await Navigation.PopToRootAsync();
+            }
+        }
     }
 }

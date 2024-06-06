@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BVND115.View.Home.TabThongBao"
+             xmlns:badge="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
              Title="TabThongBao">
     <StackLayout Orientation="Vertical">
         <Grid BackgroundColor="{StaticResource Cyan100Accent}">
@@ -14,76 +15,31 @@
             </Grid.ColumnDefinitions>
             <Label VerticalTextAlignment="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" TextColor="White" Text="THÔNG BÁO" FontSize="18" FontAttributes="Bold" FontFamily="Lobster-Regular"></Label>
             <StackLayout Orientation="Vertical" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" >
-                <ImageButton Margin="0,3,0,0" Source="icon_thongbao_thongbao.png" HeightRequest="35" WidthRequest="35" Background="{StaticResource Cyan100Accent}">
-                    <ImageButton.Triggers>
-                        <Trigger TargetType="ImageButton"
+                <badge:SfBadgeView HorizontalOptions="Center" VerticalOptions="Center" BadgeText="20" >
+                    <badge:SfBadgeView.Content>
+                        <ImageButton Margin="0,15,0,0" Source="icon_thongbao_thongbao.png" HeightRequest="35" WidthRequest="35" Background="{StaticResource Cyan100Accent}">
+                            <ImageButton.Triggers>
+                                <Trigger TargetType="ImageButton"
                                             Property="IsPressed"
                                             Value="True">
-                            <Setter Property="Scale" Value=".8" />
-                        </Trigger>
-                        <Trigger TargetType="ImageButton"
+                                    <Setter Property="Scale" Value=".8" />
+                                </Trigger>
+                                <Trigger TargetType="ImageButton"
                                               Property="IsPressed"
                                               Value="False">
-                            <Setter Property="Scale" Value="1" />
-                        </Trigger>
-                    </ImageButton.Triggers>
-                </ImageButton>
+                                    <Setter Property="Scale" Value="1" />
+                                </Trigger>
+                            </ImageButton.Triggers>
+                        </ImageButton>
+                    </badge:SfBadgeView.Content>
+                    <badge:SfBadgeView.BadgeSettings>
+                        <badge:BadgeSettings CornerRadius="18" Type="Error"  Background="red" Position="TopRight"/>
+                    </badge:SfBadgeView.BadgeSettings>
+                </badge:SfBadgeView>
                 <Label Text="Thông báo" FontFamily="Lobster-Regular" TextColor="White" HorizontalTextAlignment="Center"></Label>
             </StackLayout>
         </Grid>
         <ScrollView VerticalOptions="StartAndExpand">
-            <StackLayout Orientation="Vertical" HorizontalOptions="Center">
-                <Grid Margin="15,10,15,10" RowSpacing="0" ColumnSpacing="0"  >
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="{OnPlatform *}" />
-                        <RowDefinition Height="{OnPlatform *}" />
-                        <RowDefinition Height="{OnPlatform *}" />
-                        <RowDefinition Height="{OnPlatform *}" />
-                        <RowDefinition Height="{OnPlatform *}" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Border Padding="5,5,0,5" Grid.Row="0" Grid.Column="0" StrokeShape="RoundRectangle 20,0,0,0" BackgroundColor="{StaticResource Gray100}" >
-                        <Button  Text="Đặt khám tại cơ sở" BackgroundColor="{StaticResource Gray100}" TextColor="{StaticResource Black}" ImageSource="icon_dat_kham_co_so.png" ContentLayout="{OnPlatform Bottom,WinUI=Left }" FontAttributes="Bold" LineBreakMode="WordWrap"  FontSize="11"></Button>
-                    </Border>
-                    <Border Padding="0,5,0,5" Grid.Row="0" Grid.Column="1"  BackgroundColor="{StaticResource Gray100}" >
-                        <Button  Text="Đặt khám khám bác sĩ" BackgroundColor="{StaticResource Gray100}" TextColor="{StaticResource Black}" ImageSource="icon_dat_kham_bac_si.png" ContentLayout="{OnPlatform Bottom,WinUI=Left }" FontAttributes="Bold"  LineBreakMode="WordWrap"  FontSize="11"  x:Name="Btn_DatKhamBacSi"></Button>
-                    </Border>
-                    <Border Padding="0,5,0,5" Grid.Row="0" Grid.Column="2" StrokeShape="RoundRectangle 0,20,0,0"  BackgroundColor="{StaticResource Gray100}">
-                        <Button  Text="Tư vấn khám bệnh qua video" BackgroundColor="{StaticResource Gray100}" TextColor="{StaticResource Black}" ImageSource="icon_tu_van_kham_benh.png" ContentLayout="{OnPlatform Bottom,WinUI=Left }" FontAttributes="Bold"   LineBreakMode="WordWrap"  FontSize="11"></Button>
-                    </Border>
-                    <Border Padding="0,5,0,5" Grid.Row="1" Grid.Column="0"  BackgroundColor="{StaticResource Gray100}">
-                        <Button  Text="Gói sức khỏe toàn diện" BackgroundColor="{StaticResource Gray100}" TextColor="{StaticResource Black}" ImageSource="icon_goi_suc_khoe.png" ContentLayout="{OnPlatform Bottom,WinUI=Left }" FontAttributes="Bold"  LineBreakMode="WordWrap"  FontSize="11"></Button>
-                    </Border>
-                    <Border Padding="0,5,0,5" Grid.Row="1" Grid.Column="1"  BackgroundColor="{StaticResource Gray100}">
-                        <Button  Text="Đặt lịch xét nghiệm" BackgroundColor="{StaticResource Gray100}" TextColor="{StaticResource Black}" ImageSource="icon_dat_lich_xet_nghiem.png" ContentLayout="{OnPlatform Bottom,WinUI=Left }" FontAttributes="Bold" LineBreakMode="WordWrap"  FontSize="11"></Button>
-                    </Border>
-                    <Border Padding="0,5,0,5" Grid.Row="1" Grid.Column="2"  BackgroundColor="{StaticResource Gray100}">
-                        <Button  Text="Đặt lịch tiêm chủng" BackgroundColor="{StaticResource Gray100}" TextColor="{StaticResource Black}" ImageSource="icon_dat_lich_tiem_chung.png" ContentLayout="{OnPlatform Bottom,WinUI=Left }" FontAttributes="Bold"  LineBreakMode="WordWrap"  FontSize="11"></Button>
-                    </Border>
-                    <Border Padding="0,5,0,5" Grid.Row="2" Grid.Column="0" StrokeShape="RoundRectangle 0,0,0,0"  BackgroundColor="{StaticResource Gray100}">
-                        <Button  Text="Tra cứu kết quả khám bệnh" BackgroundColor="{StaticResource Gray100}" TextColor="{StaticResource Black}" ImageSource="icon_tra_cuu_ket_qua.png" ContentLayout="{OnPlatform Bottom,WinUI=Left }" FontAttributes="Bold"  LineBreakMode="WordWrap"  FontSize="11"></Button>
-                    </Border>
-                    <Border Padding="0,5,0,5" Grid.Row="2" Grid.Column="1"  BackgroundColor="{StaticResource Gray100}">
-                        <Button  Text="Y tế tại nhà" BackgroundColor="{StaticResource Gray100}" TextColor="{StaticResource Black}" ImageSource="icon_y_te_tai_nha.png" ContentLayout="{OnPlatform Bottom,WinUI=Left }" FontAttributes="Bold"  LineBreakMode="WordWrap"  FontSize="11" x:Name="Btn_YTeTaiNha"></Button>
-                    </Border>
-                    <Border Padding="0,5,0,5" Grid.Row="2" Grid.Column="2"  StrokeShape="RoundRectangle 0,0,0,0"  BackgroundColor="{StaticResource Gray100}">
-                        <Button  Text="Thanh toán viện phí" BackgroundColor="{StaticResource Gray100}" TextColor="{StaticResource Black}" ImageSource="icon_thanhtoanvienphi.png" ContentLayout="{OnPlatform Bottom,WinUI=Left }" FontAttributes="Bold"  LineBreakMode="WordWrap"  FontSize="11" x:Name="Btn_XemThem"></Button>
-                    </Border>
-                    <Border Padding="0,5,0,5" Grid.Row="3" Grid.Column="0" StrokeShape="RoundRectangle 0,0,20,0"  BackgroundColor="{StaticResource Gray100}">
-                        <Button  Text="Hướng dẫn đặt khám" BackgroundColor="{StaticResource Gray100}" TextColor="{StaticResource Black}" ImageSource="icon_huongdandatkham.png" ContentLayout="{OnPlatform Bottom,WinUI=Left }" FontAttributes="Bold"  LineBreakMode="WordWrap"  FontSize="11"></Button>
-                    </Border>
-                    <Border Padding="0,5,0,5" Grid.Row="3" Grid.Column="1"  BackgroundColor="{StaticResource Gray100}">
-                        <Button  Text="Đặt khám" BackgroundColor="{StaticResource Gray100}" TextColor="{StaticResource Black}" ImageSource="icon_datkham.png" ContentLayout="{OnPlatform Bottom,WinUI=Left }" FontAttributes="Bold"  LineBreakMode="WordWrap"  FontSize="11" ></Button>
-                    </Border>
-                    <Border Padding="0,5,0,5" Grid.Row="3" Grid.Column="2"  StrokeShape="RoundRectangle 0,0,0,20"  BackgroundColor="{StaticResource Gray100}">
-                        <Button  Text="Thoát" BackgroundColor="{StaticResource Gray100}" TextColor="{StaticResource Black}" ImageSource="icon_thoat.png" ContentLayout="{OnPlatform Bottom,WinUI=Left }" FontAttributes="Bold"  LineBreakMode="WordWrap"  FontSize="11" ></Button>
-                    </Border>
-                </Grid>
-            </StackLayout>
         </ScrollView>
     </StackLayout>
 </ContentPage>

@@ -28,9 +28,9 @@
                 <Grid>
                     <BoxView Color="{StaticResource Cyan100Accent}" HeightRequest="50" VerticalOptions="Start"></BoxView>
                     <BoxView CornerRadius="30" Color="{StaticResource Cyan100Accent}" HeightRequest="120" VerticalOptions="Start"></BoxView>
-                        <Border StrokeShape="RoundRectangle 20,20,20,20" Margin="10,10,10,10" Stroke="Black" StrokeThickness="1" >
+                        <Border StrokeShape="RoundRectangle 20,20,20,20" Margin="10,10,10,10" Stroke="Gray" StrokeThickness="0" >
                         <Border.Shadow>
-                            <Shadow></Shadow>
+                            <Shadow Brush="Black"></Shadow>
                         </Border.Shadow>
                         <Grid >
                             <Grid.RowDefinitions>

@@ -4,6 +4,10 @@ namespace BVND115.View.HoSo;
 
 public partial class ListHuyen : ContentPage
 {
+    TaskCompletionSource<Huyen> _taskCompletionSource;
+    public Task<Huyen> PopupDismissedTask => _taskCompletionSource.Task;
+    private Huyen ReturnValue;
+    private int ktra = 0;
     public List<Huyen> LstHuyen = new List<Huyen>();
     public ListHuyen()
 	{
@@ -37,7 +41,7 @@ Microsoft.Maui.Handlers.SearchBarHandler.Mapper.AppendToMapping("FullWidth", (ha
     protected override void OnAppearing()
     {
         base.OnAppearing();
-
+        _taskCompletionSource = new TaskCompletionSource<Huyen>();
         NavigationPage.SetHasNavigationBar(this, false);
         Shell.SetNavBarIsVisible(this, false);
     }
@@ -46,12 +50,6 @@ Microsoft.Maui.Handlers.SearchBarHandler.Mapper.AppendToMapping("FullWidth", (ha
         Navigation.PopAsync();
     }
 
-    private async void Lsv_Huyen_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-    {
-        ThemHoSo.huyen = new Huyen();
-        ThemHoSo.huyen = e.SelectedItem as Huyen;
-        await Navigation.PopAsync();
-    }
     private void Sb_TimKiem_TextChanged(object sender, TextChangedEventArgs e)
     {
         if (LstHuyen != null)
@@ -70,8 +68,18 @@ Microsoft.Maui.Handlers.SearchBarHandler.Mapper.AppendToMapping("FullWidth", (ha
     }
     protected override async void OnDisappearing()
     {
-        base.OnDisappearing();
+        if (ktra == 0)
+        {
+            base.OnDisappearing();
             await Navigation.PopToRootAsync();
-
+        }
+        base.OnDisappearing();
+        _taskCompletionSource.SetResult(ReturnValue);
+    }
+    private async void Lsv_Huyen_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
+    {
+        ReturnValue = new Huyen();
+        ReturnValue = e.DataItem as Huyen;
+        await Navigation.PopAsync();
     }
 }

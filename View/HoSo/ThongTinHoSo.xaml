@@ -29,7 +29,7 @@
             </ImageButton>
             <Label VerticalTextAlignment="Center" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1" TextColor="White" Text="XÁC NHẬN THÔNG TIN" FontSize="18" FontAttributes="Bold" FontFamily="Lobster-Regular"></Label>
             <StackLayout Orientation="Vertical" VerticalOptions="Center" Grid.Row="0" Grid.Column="2" >
-                <ImageButton Margin="0,3,0,0" Source="icon_delete.png" HeightRequest="35" WidthRequest="35" Background="{StaticResource Cyan100Accent}">
+                <ImageButton Margin="0,3,0,0" Source="icon_delete.png" HeightRequest="35" WidthRequest="35" Background="{StaticResource Cyan100Accent}" x:Name="Imb_Xoa">
                     <ImageButton.Triggers>
                         <Trigger TargetType="ImageButton"
                                             Property="IsPressed"
@@ -43,12 +43,12 @@
                         </Trigger>
                     </ImageButton.Triggers>
                 </ImageButton>
-                <Label Text="Xóa hồ sơ" FontFamily="Lobster-Regular" TextColor="White" HorizontalTextAlignment="Center"></Label>
+                <Label Text="Xóa hồ sơ" FontFamily="Lobster-Regular" TextColor="White" HorizontalTextAlignment="Center" x:Name="Lbl_Xoa"></Label>
             </StackLayout>
         </Grid>
         <ScrollView VerticalOptions="StartAndExpand">
             <StackLayout Orientation="Vertical">
-                <Label Margin="10,20,20,0" Text="THÔNG TIN BỆNH NHÂN" FontAttributes="Bold" FontSize="20"/>
+                <Label Margin="10,20,20,0" Text="THÔNG TIN BỆNH NHÂN" FontAttributes="Bold" FontSize="20" />
                 <Grid Margin="0,20,0,20">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
@@ -123,7 +123,7 @@
                     <Label Margin="10,0,0,0" Grid.Row="18" Grid.Column="0" Text="Địa chỉ" FontSize="16" />
                     <Label Margin="15,0,0,0" Grid.Row="18" Grid.Column="1" Text="Ấp 3, Mỹ Yên, Bến Lức, Long An" FontSize="16" />
                 </Grid>
-                <Button Text="CHỈNH SỬA"  BackgroundColor="{StaticResource Cyan100Accent}"></Button>
+                <Button Text="CHỈNH SỬA HỒ SƠ" FontSize="16" BackgroundColor="{StaticResource Cyan100Accent}" CornerRadius="30" x:Name="Btn_Click" Clicked="Btn_Click_Clicked"></Button>
             </StackLayout>
         </ScrollView>
     </StackLayout>
